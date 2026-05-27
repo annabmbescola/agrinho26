@@ -11,3 +11,6 @@ painel moderno
 animações
 escolhas morais
 evolução do cenário
+
+classroom ferramentas fazer desenhos 
+jogo interativo com mudanças em tempo real por decisões tomadas na fazenda 

@@ -1,18 +1,120 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fazenda</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: url('fazenda.jpg') center center no-repeat;
-            background-size: cover;
-        }
-    </style>
-</head>
-<body>
-</body>
-</html>
+# AGRINHO 2050
+
+## Tema
+"As escolhas de hoje constroem o futuro do campo e da cidade."
+
+## Objetivo
+Criar um simulador interativo que ensine sustentabilidade por meio da tomada de decisões. O usuário assume o papel de um produtor rural e precisa administrar sua propriedade até o ano de 2050.
+
+## Como funciona
+
+O jogador começa com os seguintes indicadores:
+
+🌱 Sustentabilidade: 50
+💰 Economia: 50
+💧 Recursos Hídricos: 50
+🌳 Biodiversidade: 50
+😊 Qualidade de Vida: 50
+
+Durante a simulação, o usuário toma decisões que afetam esses indicadores.
+
+---
+
+## Cenário 1 - Irrigação
+
+Como você deseja irrigar sua plantação?
+
+A) Sistema tradicional
++10 Economia
+-15 Água
+-10 Sustentabilidade
+
+B) Sistema de gotejamento
+-10 Economia
++15 Água
++10 Sustentabilidade
+
+---
+
+## Cenário 2 - Área de Preservação
+
+Existe uma área de mata nativa na propriedade.
+
+A) Desmatar para aumentar a produção
++15 Economia
+-20 Biodiversidade
+-15 Sustentabilidade
+
+B) Preservar a área
++15 Biodiversidade
++15 Sustentabilidade
+-5 Economia
+
+---
+
+## Cenário 3 - Energia
+
+Qual fonte de energia utilizar?
+
+A) Convencional
++5 Economia
+
+B) Energia solar
++15 Sustentabilidade
++10 Qualidade de Vida
+-10 Economia
+
+---
+
+## Cenário 4 - Resíduos
+
+Como descartar os resíduos da propriedade?
+
+A) Descarte inadequado
++5 Economia
+-20 Sustentabilidade
+-15 Qualidade de Vida
+
+B) Reciclagem e tratamento correto
++15 Sustentabilidade
++10 Qualidade de Vida
+
+---
+
+## Cenário 5 - Uso da Água
+
+Uma seca atinge a região.
+
+A) Continuar consumindo normalmente
+-20 Água
+
+B) Adotar medidas de economia
++15 Sustentabilidade
++10 Água
+
+---
+
+## Resultado Final
+
+Se Sustentabilidade >= 80:
+🌟 Guardião da Natureza
+
+Se Sustentabilidade entre 60 e 79:
+🌱 Produtor Sustentável
+
+Se Sustentabilidade entre 40 e 59:
+⚖️ Em Transição
+
+Se Sustentabilidade < 40:
+⚠️ Alto Impacto Ambiental
+
+---
+
+## Melhorias Futuras
+
+- Gráficos de evolução.
+- Linha do tempo de 2026 a 2050.
+- IA explicando os resultados.
+- Animações.
+- Ranking de pontuação.
+- Certificado final para o usuário.

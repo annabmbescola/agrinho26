@@ -1,120 +1,284 @@
-# AGRINHO 2050
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agrinho 2050</title>
 
-## Tema
-"As escolhas de hoje constroem o futuro do campo e da cidade."
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-## Objetivo
-Criar um simulador interativo que ensine sustentabilidade por meio da tomada de decisões. O usuário assume o papel de um produtor rural e precisa administrar sua propriedade até o ano de 2050.
+body{
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
 
-## Como funciona
+.container{
+    width:90%;
+    max-width:800px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.15);
+}
 
-O jogador começa com os seguintes indicadores:
+h1{
+    color:#2e7d32;
+    text-align:center;
+    margin-bottom:20px;
+}
 
-🌱 Sustentabilidade: 50
-💰 Economia: 50
-💧 Recursos Hídricos: 50
-🌳 Biodiversidade: 50
-😊 Qualidade de Vida: 50
+.indicadores{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-bottom:25px;
+}
 
-Durante a simulação, o usuário toma decisões que afetam esses indicadores.
+.card{
+    background:#e8f5e9;
+    padding:10px;
+    border-radius:10px;
+    font-weight:bold;
+}
 
----
+.pergunta{
+    font-size:1.2rem;
+    margin-bottom:20px;
+}
 
-## Cenário 1 - Irrigação
+button{
+    width:100%;
+    margin:10px 0;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:.3s;
+}
 
-Como você deseja irrigar sua plantação?
+.opcao{
+    background:#43a047;
+    color:white;
+}
 
-A) Sistema tradicional
-+10 Economia
--15 Água
--10 Sustentabilidade
+.opcao:hover{
+    background:#2e7d32;
+}
 
-B) Sistema de gotejamento
--10 Economia
-+15 Água
-+10 Sustentabilidade
+.resultado{
+    text-align:center;
+}
 
----
+.resultado h2{
+    margin-bottom:15px;
+}
 
-## Cenário 2 - Área de Preservação
+.hidden{
+    display:none;
+}
+</style>
+</head>
+<body>
 
-Existe uma área de mata nativa na propriedade.
+<div class="container">
 
-A) Desmatar para aumentar a produção
-+15 Economia
--20 Biodiversidade
--15 Sustentabilidade
+    <h1>🌱 AGRINHO 2050</h1>
 
-B) Preservar a área
-+15 Biodiversidade
-+15 Sustentabilidade
--5 Economia
+    <div class="indicadores">
+        <div class="card">🌱 Sustentabilidade: <span id="sus">50</span></div>
+        <div class="card">💰 Economia: <span id="eco">50</span></div>
+        <div class="card">💧 Água: <span id="agua">50</span></div>
+        <div class="card">🌳 Biodiversidade: <span id="bio">50</span></div>
+    </div>
 
----
+    <div id="quiz">
+        <p class="pergunta" id="pergunta"></p>
+        <div id="opcoes"></div>
+    </div>
 
-## Cenário 3 - Energia
+    <div id="resultado" class="resultado hidden">
+        <h2>Resultado Final</h2>
+        <h3 id="perfil"></h3>
 
-Qual fonte de energia utilizar?
+        <br>
 
-A) Convencional
-+5 Economia
+        <p>🌱 Sustentabilidade: <span id="fSus"></span></p>
+        <p>💰 Economia: <span id="fEco"></span></p>
+        <p>💧 Água: <span id="fAgua"></span></p>
+        <p>🌳 Biodiversidade: <span id="fBio"></span></p>
 
-B) Energia solar
-+15 Sustentabilidade
-+10 Qualidade de Vida
--10 Economia
+        <br>
 
----
+        <button onclick="location.reload()">Jogar Novamente</button>
+    </div>
 
-## Cenário 4 - Resíduos
+</div>
 
-Como descartar os resíduos da propriedade?
+<script>
 
-A) Descarte inadequado
-+5 Economia
--20 Sustentabilidade
--15 Qualidade de Vida
+let sustentabilidade = 50;
+let economia = 50;
+let agua = 50;
+let biodiversidade = 50;
 
-B) Reciclagem e tratamento correto
-+15 Sustentabilidade
-+10 Qualidade de Vida
+const perguntas = [
+{
+    pergunta: "Como você deseja irrigar sua plantação?",
+    opcoes:[
+        {
+            texto:"Sistema tradicional",
+            efeito:{eco:10, agua:-15, sus:-10}
+        },
+        {
+            texto:"Sistema de gotejamento",
+            efeito:{eco:-10, agua:15, sus:10}
+        }
+    ]
+},
+{
+    pergunta:"Existe uma área de mata nativa. O que fazer?",
+    opcoes:[
+        {
+            texto:"Desmatar para produzir mais",
+            efeito:{eco:15, bio:-20, sus:-15}
+        },
+        {
+            texto:"Preservar a área",
+            efeito:{eco:-5, bio:15, sus:15}
+        }
+    ]
+},
+{
+    pergunta:"Qual fonte de energia utilizar?",
+    opcoes:[
+        {
+            texto:"Energia convencional",
+            efeito:{eco:5}
+        },
+        {
+            texto:"Energia solar",
+            efeito:{eco:-10, sus:15}
+        }
+    ]
+},
+{
+    pergunta:"Como descartar os resíduos?",
+    opcoes:[
+        {
+            texto:"Descartar incorretamente",
+            efeito:{eco:5, sus:-20}
+        },
+        {
+            texto:"Reciclar e tratar corretamente",
+            efeito:{sus:15}
+        }
+    ]
+},
+{
+    pergunta:"Uma seca atingiu a região. O que fazer?",
+    opcoes:[
+        {
+            texto:"Manter consumo normal",
+            efeito:{agua:-20}
+        },
+        {
+            texto:"Economizar água",
+            efeito:{agua:10, sus:15}
+        }
+    ]
+}
+];
 
----
+let atual = 0;
 
-## Cenário 5 - Uso da Água
+function atualizarIndicadores(){
+    document.getElementById("sus").textContent = sustentabilidade;
+    document.getElementById("eco").textContent = economia;
+    document.getElementById("agua").textContent = agua;
+    document.getElementById("bio").textContent = biodiversidade;
+}
 
-Uma seca atinge a região.
+function mostrarPergunta(){
 
-A) Continuar consumindo normalmente
--20 Água
+    if(atual >= perguntas.length){
+        finalizar();
+        return;
+    }
 
-B) Adotar medidas de economia
-+15 Sustentabilidade
-+10 Água
+    const pergunta = perguntas[atual];
 
----
+    document.getElementById("pergunta").textContent =
+    pergunta.pergunta;
 
-## Resultado Final
+    const opcoesDiv = document.getElementById("opcoes");
+    opcoesDiv.innerHTML = "";
 
-Se Sustentabilidade >= 80:
-🌟 Guardião da Natureza
+    pergunta.opcoes.forEach(opcao => {
 
-Se Sustentabilidade entre 60 e 79:
-🌱 Produtor Sustentável
+        const btn = document.createElement("button");
 
-Se Sustentabilidade entre 40 e 59:
-⚖️ Em Transição
+        btn.classList.add("opcao");
+        btn.textContent = opcao.texto;
 
-Se Sustentabilidade < 40:
-⚠️ Alto Impacto Ambiental
+        btn.onclick = () => {
 
----
+            sustentabilidade += opcao.efeito.sus || 0;
+            economia += opcao.efeito.eco || 0;
+            agua += opcao.efeito.agua || 0;
+            biodiversidade += opcao.efeito.bio || 0;
 
-## Melhorias Futuras
+            atualizarIndicadores();
 
-- Gráficos de evolução.
-- Linha do tempo de 2026 a 2050.
-- IA explicando os resultados.
-- Animações.
-- Ranking de pontuação.
-- Certificado final para o usuário.
+            atual++;
+            mostrarPergunta();
+        };
+
+        opcoesDiv.appendChild(btn);
+    });
+}
+
+function finalizar(){
+
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("resultado").classList.remove("hidden");
+
+    let perfil = "";
+
+    if(sustentabilidade >= 80){
+        perfil = "🌟 Guardião da Natureza";
+    }
+    else if(sustentabilidade >= 60){
+        perfil = "🌱 Produtor Sustentável";
+    }
+    else if(sustentabilidade >= 40){
+        perfil = "⚖️ Em Transição";
+    }
+    else{
+        perfil = "⚠️ Alto Impacto Ambiental";
+    }
+
+    document.getElementById("perfil").textContent = perfil;
+
+    document.getElementById("fSus").textContent = sustentabilidade;
+    document.getElementById("fEco").textContent = economia;
+    document.getElementById("fAgua").textContent = agua;
+    document.getElementById("fBio").textContent = biodiversidade;
+}
+
+mostrarPergunta();
+atualizarIndicadores();
+
+</script>
+
+</body>
+</html>

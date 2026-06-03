@@ -6,279 +6,242 @@
 <title>Agrinho 2050</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
 body{
-    background:#f4f4f4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+    margin:0;
+    font-family:Arial;
+    background:#f4f8f4;
+    color:#2b2b2b;
 }
 
-.container{
-    width:90%;
-    max-width:800px;
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 0 15px rgba(0,0,0,.15);
-}
-
-h1{
-    color:#2e7d32;
+header{
+    background:linear-gradient(135deg,#2e7d32,#4caf50);
+    color:white;
+    padding:70px 20px;
     text-align:center;
-    margin-bottom:20px;
 }
 
-.indicadores{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-    margin-bottom:25px;
+header h1{
+    font-size:2.8rem;
 }
 
-.card{
-    background:#e8f5e9;
+nav{
+    background:#1b5e20;
     padding:10px;
-    border-radius:10px;
+    text-align:center;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    color:white;
+    margin:0 15px;
+    text-decoration:none;
     font-weight:bold;
 }
 
-.pergunta{
-    font-size:1.2rem;
-    margin-bottom:20px;
+section{
+    padding:60px 15%;
 }
 
-button{
-    width:100%;
-    margin:10px 0;
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:1rem;
-    transition:.3s;
-}
-
-.opcao{
-    background:#43a047;
-    color:white;
-}
-
-.opcao:hover{
-    background:#2e7d32;
-}
-
-.resultado{
-    text-align:center;
-}
-
-.resultado h2{
+h2{
+    color:#2e7d32;
     margin-bottom:15px;
 }
 
-.hidden{
-    display:none;
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin:15px 0;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.simulador{
+    background:#e8f5e9;
+    padding:40px;
+    border-radius:15px;
+}
+
+button{
+    padding:12px;
+    width:100%;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#2e7d32;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1b5e20;
+}
+
+footer{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 </style>
+
 </head>
+
 <body>
 
-<div class="container">
-
+<header>
     <h1>🌱 AGRINHO 2050</h1>
+    <p>As escolhas do campo hoje determinam o futuro da água, dos alimentos e da vida nas cidades.</p>
+</header>
 
-    <div class="indicadores">
-        <div class="card">🌱 Sustentabilidade: <span id="sus">50</span></div>
-        <div class="card">💰 Economia: <span id="eco">50</span></div>
-        <div class="card">💧 Água: <span id="agua">50</span></div>
-        <div class="card">🌳 Biodiversidade: <span id="bio">50</span></div>
-    </div>
+<nav>
+    <a href="#sustentabilidade">Sustentabilidade</a>
+    <a href="#impactos">Impactos</a>
+    <a href="#agua">Água</a>
+    <a href="#campo">Campo e Cidade</a>
+    <a href="#mesa">Do Campo à Mesa</a>
+    <a href="#simulador">Simulador</a>
+</nav>
 
-    <div id="quiz">
-        <p class="pergunta" id="pergunta"></p>
-        <div id="opcoes"></div>
-    </div>
+<section id="sustentabilidade">
 
-    <div id="resultado" class="resultado hidden">
-        <h2>Resultado Final</h2>
-        <h3 id="perfil"></h3>
+<h2>🌍 O que é sustentabilidade na prática?</h2>
 
-        <br>
-
-        <p>🌱 Sustentabilidade: <span id="fSus"></span></p>
-        <p>💰 Economia: <span id="fEco"></span></p>
-        <p>💧 Água: <span id="fAgua"></span></p>
-        <p>🌳 Biodiversidade: <span id="fBio"></span></p>
-
-        <br>
-
-        <button onclick="location.reload()">Jogar Novamente</button>
-    </div>
-
+<div class="card">
+Sustentabilidade não é apenas “preservar o meio ambiente”.  
+É equilibrar três pontos ao mesmo tempo:
+<ul>
+<li>🌱 Produção de alimentos</li>
+<li>💰 Viabilidade econômica do produtor</li>
+<li>🌳 Preservação dos recursos naturais</li>
+</ul>
+Se um desses pilares falha, todo o sistema é afetado.
 </div>
 
-<script>
+<div class="card">
+Exemplo real:  
+Uma irrigação mal planejada pode aumentar a produção no curto prazo, mas causar escassez de água no futuro.
+</div>
 
-let sustentabilidade = 50;
-let economia = 50;
-let agua = 50;
-let biodiversidade = 50;
+</section>
 
-const perguntas = [
-{
-    pergunta: "Como você deseja irrigar sua plantação?",
-    opcoes:[
-        {
-            texto:"Sistema tradicional",
-            efeito:{eco:10, agua:-15, sus:-10}
-        },
-        {
-            texto:"Sistema de gotejamento",
-            efeito:{eco:-10, agua:15, sus:10}
-        }
-    ]
-},
-{
-    pergunta:"Existe uma área de mata nativa. O que fazer?",
-    opcoes:[
-        {
-            texto:"Desmatar para produzir mais",
-            efeito:{eco:15, bio:-20, sus:-15}
-        },
-        {
-            texto:"Preservar a área",
-            efeito:{eco:-5, bio:15, sus:15}
-        }
-    ]
-},
-{
-    pergunta:"Qual fonte de energia utilizar?",
-    opcoes:[
-        {
-            texto:"Energia convencional",
-            efeito:{eco:5}
-        },
-        {
-            texto:"Energia solar",
-            efeito:{eco:-10, sus:15}
-        }
-    ]
-},
-{
-    pergunta:"Como descartar os resíduos?",
-    opcoes:[
-        {
-            texto:"Descartar incorretamente",
-            efeito:{eco:5, sus:-20}
-        },
-        {
-            texto:"Reciclar e tratar corretamente",
-            efeito:{sus:15}
-        }
-    ]
-},
-{
-    pergunta:"Uma seca atingiu a região. O que fazer?",
-    opcoes:[
-        {
-            texto:"Manter consumo normal",
-            efeito:{agua:-20}
-        },
-        {
-            texto:"Economizar água",
-            efeito:{agua:10, sus:15}
-        }
-    ]
-}
-];
+<section id="impactos">
 
-let atual = 0;
+<h2>⚠️ Impactos das decisões no campo</h2>
 
-function atualizarIndicadores(){
-    document.getElementById("sus").textContent = sustentabilidade;
-    document.getElementById("eco").textContent = economia;
-    document.getElementById("agua").textContent = agua;
-    document.getElementById("bio").textContent = biodiversidade;
-}
+<div class="card">
+No campo, pequenas decisões geram grandes consequências:
+<ul>
+<li>Uso excessivo de agrotóxicos → contaminação do solo e da água</li>
+<li>Desmatamento → perda de biodiversidade e aumento de temperatura</li>
+<li>Tecnologia sustentável → aumento da eficiência e preservação</li>
+</ul>
+</div>
 
-function mostrarPergunta(){
+</section>
 
-    if(atual >= perguntas.length){
-        finalizar();
-        return;
-    }
+<section id="agua">
 
-    const pergunta = perguntas[atual];
+<h2>💧 A importância da água</h2>
 
-    document.getElementById("pergunta").textContent =
-    pergunta.pergunta;
+<div class="card">
+A agricultura consome cerca de 70% da água doce do mundo.  
+Por isso, o uso consciente é essencial.
+</div>
 
-    const opcoesDiv = document.getElementById("opcoes");
-    opcoesDiv.innerHTML = "";
+<div class="card">
+Técnicas como:
+- irrigação por gotejamento  
+- reuso de água  
+- proteção de nascentes  
+reduzem desperdícios e aumentam a eficiência.
+</div>
 
-    pergunta.opcoes.forEach(opcao => {
+</section>
 
-        const btn = document.createElement("button");
+<section id="campo">
 
-        btn.classList.add("opcao");
-        btn.textContent = opcao.texto;
+<h2>🚜 Campo e cidade são dependentes</h2>
 
-        btn.onclick = () => {
+<div class="card">
+O campo produz alimentos.  
+A cidade consome esses alimentos.
 
-            sustentabilidade += opcao.efeito.sus || 0;
-            economia += opcao.efeito.eco || 0;
-            agua += opcao.efeito.agua || 0;
-            biodiversidade += opcao.efeito.bio || 0;
+Se o campo não for sustentável:
+- os alimentos ficam mais caros
+- a qualidade diminui
+- o abastecimento pode ser afetado
+</div>
 
-            atualizarIndicadores();
+</section>
 
-            atual++;
-            mostrarPergunta();
-        };
+<section id="mesa">
 
-        opcoesDiv.appendChild(btn);
-    });
-}
+<h2>📸 Do Campo à Sua Mesa</h2>
 
-function finalizar(){
+<div class="card">
+Os alimentos do supermercado não “nascem lá”.  
+Eles passam por uma cadeia produtiva longa que começa no campo.
+</div>
 
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("resultado").classList.remove("hidden");
+<div class="card">
+💡 Quando você vê uma fruta no mercado, ela depende de:
+- solo saudável
+- água limpa
+- trabalho humano
+- decisões sustentáveis
+</div>
 
-    let perfil = "";
+<div class="card">
+📌 Aqui você pode inserir suas fotos reais do supermercado para mostrar:
+- frutas
+- hortaliças
+- carnes
+- laticínios
+- produtos locais
+</div>
 
-    if(sustentabilidade >= 80){
-        perfil = "🌟 Guardião da Natureza";
-    }
-    else if(sustentabilidade >= 60){
-        perfil = "🌱 Produtor Sustentável";
-    }
-    else if(sustentabilidade >= 40){
-        perfil = "⚖️ Em Transição";
-    }
-    else{
-        perfil = "⚠️ Alto Impacto Ambiental";
-    }
+<div class="card">
+Essas imagens ajudam a entender que sustentabilidade não é teoria — é algo que chega até a nossa mesa todos os dias.
+</div>
 
-    document.getElementById("perfil").textContent = perfil;
+</section>
 
-    document.getElementById("fSus").textContent = sustentabilidade;
-    document.getElementById("fEco").textContent = economia;
-    document.getElementById("fAgua").textContent = agua;
-    document.getElementById("fBio").textContent = biodiversidade;
-}
+<section id="simulador">
 
-mostrarPergunta();
-atualizarIndicadores();
+<h2>🎮 Simulador: suas decisões constroem o futuro</h2>
 
-</script>
+<div class="card">
+Antes de começar, pense:  
+cada escolha abaixo representa situações reais do campo.
+</div>
+
+<div class="card">
+👉 O simulador mostrará como suas decisões afetam:
+<ul>
+<li>Sustentabilidade</li>
+<li>Economia</li>
+<li>Água</li>
+<li>Biodiversidade</li>
+</ul>
+</div>
+
+<button onclick="location.href='simulador.html'">
+Iniciar Simulação
+</button>
+
+</section>
+
+<footer>
+
+<h3>📚 Referências</h3>
+
+<p>FAO – Organização das Nações Unidas para Agricultura e Alimentação</p>
+<p>EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária</p>
+<p>ONU – Objetivos de Desenvolvimento Sustentável (ODS)</p>
+<p>IBGE – Indicadores ambientais e agrícolas do Brasil</p>
+
+</footer>
 
 </body>
 </html>

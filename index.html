@@ -56,12 +56,6 @@ h2{
     box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
-.simulador{
-    background:#e8f5e9;
-    padding:40px;
-    border-radius:15px;
-}
-
 button{
     padding:12px;
     width:100%;
@@ -77,14 +71,24 @@ button:hover{
     background:#1b5e20;
 }
 
-footer{
-    background:#1b5e20;
+/* SIMULADOR */
+#simArea{
+    display:none;
+    background:#e8f5e9;
+    padding:30px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+.option{
+    background:#2e7d32;
+    margin-top:10px;
+    padding:12px;
+    border-radius:8px;
     color:white;
-    text-align:center;
-    padding:20px;
+    cursor:pointer;
 }
 </style>
-
 </head>
 
 <body>
@@ -103,145 +107,140 @@ footer{
     <a href="#simulador">Simulador</a>
 </nav>
 
+<!-- CONTEÚDO -->
 <section id="sustentabilidade">
-
-<h2>🌍 O que é sustentabilidade na prática?</h2>
-
-<div class="card">
-Sustentabilidade não é apenas “preservar o meio ambiente”.  
-É equilibrar três pontos ao mesmo tempo:
-<ul>
-<li>🌱 Produção de alimentos</li>
-<li>💰 Viabilidade econômica do produtor</li>
-<li>🌳 Preservação dos recursos naturais</li>
-</ul>
-Se um desses pilares falha, todo o sistema é afetado.
-</div>
+<h2>🌍 Sustentabilidade</h2>
 
 <div class="card">
-Exemplo real:  
-Uma irrigação mal planejada pode aumentar a produção no curto prazo, mas causar escassez de água no futuro.
+Sustentabilidade é equilibrar produção, economia e meio ambiente.
 </div>
-
 </section>
 
 <section id="impactos">
-
-<h2>⚠️ Impactos das decisões no campo</h2>
-
+<h2>⚠️ Impactos</h2>
 <div class="card">
-No campo, pequenas decisões geram grandes consequências:
-<ul>
-<li>Uso excessivo de agrotóxicos → contaminação do solo e da água</li>
-<li>Desmatamento → perda de biodiversidade e aumento de temperatura</li>
-<li>Tecnologia sustentável → aumento da eficiência e preservação</li>
-</ul>
+Decisões erradas podem causar poluição, desmatamento e falta de água.
 </div>
-
 </section>
 
 <section id="agua">
-
-<h2>💧 A importância da água</h2>
-
+<h2>💧 Água</h2>
 <div class="card">
-A agricultura consome cerca de 70% da água doce do mundo.  
-Por isso, o uso consciente é essencial.
+A agricultura usa grande parte da água doce do planeta.
 </div>
-
-<div class="card">
-Técnicas como:
-- irrigação por gotejamento  
-- reuso de água  
-- proteção de nascentes  
-reduzem desperdícios e aumentam a eficiência.
-</div>
-
 </section>
 
 <section id="campo">
-
-<h2>🚜 Campo e cidade são dependentes</h2>
-
+<h2>🚜 Campo e Cidade</h2>
 <div class="card">
-O campo produz alimentos.  
-A cidade consome esses alimentos.
-
-Se o campo não for sustentável:
-- os alimentos ficam mais caros
-- a qualidade diminui
-- o abastecimento pode ser afetado
+O campo alimenta a cidade. Um depende do outro.
 </div>
-
 </section>
 
 <section id="mesa">
-
-<h2>📸 Do Campo à Sua Mesa</h2>
-
+<h2>📸 Do Campo à Mesa</h2>
 <div class="card">
-Os alimentos do supermercado não “nascem lá”.  
-Eles passam por uma cadeia produtiva longa que começa no campo.
+Aqui você pode colocar suas fotos do supermercado.
 </div>
-
-<div class="card">
-💡 Quando você vê uma fruta no mercado, ela depende de:
-- solo saudável
-- água limpa
-- trabalho humano
-- decisões sustentáveis
-</div>
-
-<div class="card">
-📌 Aqui você pode inserir suas fotos reais do supermercado para mostrar:
-- frutas
-- hortaliças
-- carnes
-- laticínios
-- produtos locais
-</div>
-
-<div class="card">
-Essas imagens ajudam a entender que sustentabilidade não é teoria — é algo que chega até a nossa mesa todos os dias.
-</div>
-
 </section>
 
+<!-- SIMULADOR -->
 <section id="simulador">
 
-<h2>🎮 Simulador: suas decisões constroem o futuro</h2>
+<h2>🎮 Simulador</h2>
 
 <div class="card">
-Antes de começar, pense:  
-cada escolha abaixo representa situações reais do campo.
+Antes de começar, pense nas consequências das suas escolhas.
 </div>
 
-<div class="card">
-👉 O simulador mostrará como suas decisões afetam:
-<ul>
-<li>Sustentabilidade</li>
-<li>Economia</li>
-<li>Água</li>
-<li>Biodiversidade</li>
-</ul>
-</div>
+<button onclick="iniciarSimulador()">Iniciar Simulação</button>
 
-<button onclick="location.href='simulador.html'">
-Iniciar Simulação
-</button>
+<div id="simArea">
+
+<h3>Indicadores</h3>
+<p>Sustentabilidade: <span id="sus">50</span></p>
+<p>Água: <span id="agua">50</span></p>
+
+<h3 id="pergunta"></h3>
+
+<div id="opcoes"></div>
+
+</div>
 
 </section>
 
-<footer>
+<script>
 
-<h3>📚 Referências</h3>
+let sus = 50;
+let agua = 50;
 
-<p>FAO – Organização das Nações Unidas para Agricultura e Alimentação</p>
-<p>EMBRAPA – Empresa Brasileira de Pesquisa Agropecuária</p>
-<p>ONU – Objetivos de Desenvolvimento Sustentável (ODS)</p>
-<p>IBGE – Indicadores ambientais e agrícolas do Brasil</p>
+let fase = 0;
 
-</footer>
+const perguntas = [
+{
+texto:"Como irrigar a plantação?",
+op:[
+{text:"Sistema tradicional", s:-10, a:-15},
+{text:"Gotejamento", s:+10, a:+10}
+]
+},
+{
+texto:"Uma seca aconteceu",
+op:[
+{text:"Ignorar", s:-10, a:-20},
+{text:"Economizar água", s:+10, a:+15}
+]
+}
+];
+
+function iniciarSimulador(){
+    document.getElementById("simArea").style.display="block";
+    mostrar();
+}
+
+function atualizar(){
+    document.getElementById("sus").innerText = sus;
+    document.getElementById("agua").innerText = agua;
+}
+
+function mostrar(){
+
+    if(fase >= perguntas.length){
+        document.getElementById("pergunta").innerText = "Fim da simulação!";
+        document.getElementById("opcoes").innerHTML = "";
+        return;
+    }
+
+    let p = perguntas[fase];
+
+    document.getElementById("pergunta").innerText = p.texto;
+
+    let div = document.getElementById("opcoes");
+    div.innerHTML = "";
+
+    p.op.forEach(o=>{
+
+        let b = document.createElement("div");
+        b.classList.add("option");
+        b.innerText = o.text;
+
+        b.onclick = ()=>{
+
+            sus += o.s;
+            agua += o.a;
+
+            fase++;
+            atualizar();
+            mostrar();
+        };
+
+        div.appendChild(b);
+    });
+}
+
+atualizar();
+
+</script>
 
 </body>
 </html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AGRINHO 2050 - O Agro Vai Sustentar o Futuro?</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f8f4;
+color:#222;
+}
+
+header{
+background:linear-gradient(135deg,#1b5e20,#4caf50);
+color:white;
+padding:70px 20px;
+text-align:center;
+}
+
+header h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+header p{
+font-size:1.2rem;
+max-width:800px;
+margin:auto;
+}
+
+nav{
+background:#114416;
+padding:15px;
+position:sticky;
+top:0;
+z-index:999;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 12px;
+font-weight:bold;
+}
+
+section{
+padding:60px 10%;
+}
+
+h2{
+color:#2e7d32;
+margin-bottom:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+margin-top:20px;
+box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#2e7d32;
+color:white;
+font-size:1rem;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+#simArea{
+display:none;
+margin-top:30px;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.status{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-bottom:30px;
+}
+
+.indicador{
+background:#f1f8e9;
+padding:15px;
+border-radius:12px;
+text-align:center;
+}
+
+.valor{
+font-size:1.6rem;
+font-weight:bold;
+color:#1b5e20;
+}
+
+.barra{
+height:12px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.progresso{
+height:100%;
+width:50%;
+background:#4caf50;
+transition:.5s;
+}
+
+#anoAtual{
+font-size:1.3rem;
+font-weight:bold;
+color:#1b5e20;
+margin-bottom:20px;
+}
+
+#evento{
+background:#fff8e1;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px;
+font-weight:bold;
+}
+
+#pergunta{
+font-size:1.4rem;
+margin-bottom:20px;
+}
+
+.opcao{
+background:#2e7d32;
+color:white;
+padding:15px;
+border-radius:10px;
+margin-top:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.opcao:hover{
+transform:scale(1.02);
+background:#1b5e20;
+}
+
+#resultadoFinal{
+display:none;
+margin-top:30px;
+background:#e8f5e9;
+padding:30px;
+border-radius:15px;
+}
+
+footer{
+background:#114416;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>🌱 AGRINHO 2050</h1>
+<p>Decisões no campo hoje definem o futuro da produção, da água e da vida nas cidades.</p>
+</header>
+
+<nav>
+<a href="#sustentabilidade">Sustentabilidade</a>
+<a href="#impactos">Impactos</a>
+<a href="#agua">Água</a>
+<a href="#campoCidade">Campo e Cidade</a>
+<a href="#simulador">Simulador</a>
+</nav>
+
+<section id="sustentabilidade">
+<h2>Sustentabilidade</h2>
+<div class="card">
+Equilibrar produção, economia e preservação ambiental garante o futuro da agricultura.
+</div>
+</section>
+
+<section id="impactos">
+<h2>Impactos Ambientais</h2>
+<div class="card">
+O uso incorreto dos recursos naturais pode comprometer solo, água e produção.
+</div>
+</section>
+
+<section id="agua">
+<h2>Água</h2>
+<div class="card">
+A água é essencial para a agricultura e deve ser usada com responsabilidade.
+</div>
+</section>
+
+<section id="campoCidade">
+<h2>Campo e Cidade</h2>
+<div class="card">
+O campo produz alimentos e a cidade fornece tecnologia e mercado.
+</div>
+</section>
+
+<section id="simulador">
+
+<h2>Simulador AGRINHO 2050</h2>
+
+<div class="card">
+
+<p>Você administrará uma fazenda entre 2025 e 2050.</p>
+
+<ul>
+<li>Dinheiro</li>
+<li>Sustentabilidade</li>
+<li>Água</li>
+<li>Produção</li>
+</ul>
+
+<br>
+
+<button onclick="iniciarJogo()">INICIAR</button>
+
+</div>
+
+<div id="simArea">
+
+<div id="anoAtual">Ano: 2025</div>
+
+<div class="status">
+
+<div class="indicador">
+<h3>Dinheiro</h3>
+<div class="valor" id="dinheiro">100</div>
+</div>
+
+<div class="indicador">
+<h3>Sustentabilidade</h3>
+<div class="valor" id="sustentabilidade">50</div>
+</div>
+
+<div class="indicador">
+<h3>Água</h3>
+<div class="valor" id="agua">50</div>
+</div>
+
+<div class="indicador">
+<h3>Produção</h3>
+<div class="valor" id="producao">50</div>
+</div>
+
+</div>
+
+<div id="evento">Início da simulação</div>
+
+<h3 id="pergunta"></h3>
+
+<div id="opcoes"></div>
+
+<div id="resultadoFinal"></div>
+
+</div>
+
+</section>
+
+<footer>
+AGRINHO 2050 © Projeto Educacional
+</footer>
+
+<script>
+
+let dinheiro = 100;
+let sustentabilidade = 50;
+let agua = 50;
+let producao = 50;
+
+let fase = 0;
+
+const anos = [2025,2027,2029,2031,2033,2035,2037,2039,2041,2043,2045,2047,2048,2049,2050];
+
+const perguntas = [
+{
+texto:"Investir em tecnologia ou expandir terras?",
+op:[
+{text:"Expandir terras", d:+30,s:-10,a:-5,p:+25},
+{text:"Tecnologia", d:-20,s:+20,a:+10,p:+15}
+]
+},
+{
+texto:"Seca forte atingiu a região",
+op:[
+{text:"Construir reservatório", d:-40,s:+15,a:+30,p:+10},
+{text:"Esperar chuva", d:0,s:-10,a:-20,p:-20}
+]
+},
+{
+texto:"Incêndio na plantação",
+op:[
+{text:"Combater o fogo", d:-50,s:+25,a:+10,p:-5},
+{text:"Não agir", d:0,s:-50,a:-20,p:-40}
+]
+}
+];
+
+function iniciarJogo(){
+document.getElementById("simArea").style.display="block";
+mostrarPergunta();
+atualizar();
+}
+
+function atualizar(){
+document.getElementById("dinheiro").innerText=dinheiro;
+document.getElementById("sustentabilidade").innerText=sustentabilidade;
+document.getElementById("agua").innerText=agua;
+document.getElementById("producao").innerText=producao;
+}
+
+function mostrarPergunta(){
+
+if(fase>=perguntas.length){
+document.getElementById("pergunta").innerText="Fim da simulação";
+document.getElementById("opcoes").innerHTML="";
+return;
+}
+
+let p=perguntas[fase];
+
+document.getElementById("pergunta").innerText=p.texto;
+
+let op=document.getElementById("opcoes");
+op.innerHTML="";
+
+p.op.forEach(o=>{
+
+let div=document.createElement("div");
+div.classList.add("opcao");
+div.innerText=o.text;
+
+div.onclick=()=>{
+
+dinheiro+=o.d;
+sustentabilidade+=o.s;
+agua+=o.a;
+producao+=o.p;
+
+atualizar();
+
+fase++;
+mostrarPergunta();
+};
+
+op.appendChild(div);
+});
+}
+
+atualizar();
+
+</script>
+
+</body>
+</html>

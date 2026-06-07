@@ -411,6 +411,8 @@ let sustentabilidade = 50;
 let agua = 50;
 let producao = 50;
 
+  
+
 let fase = 0;
 
 const anos = [
@@ -886,6 +888,10 @@ sustentabilidade += op.s;
 agua += op.a;
 producao += op.p;
 
+  sustentabilidade = Math.max(0, Math.min(100, sustentabilidade));
+agua = Math.max(0, Math.min(100, agua));
+producao = Math.max(0, Math.min(100, producao));
+
 // bônus sustentável
 
 if(sustentabilidade >= 80){
@@ -911,7 +917,28 @@ if(agua <= 20){
 producao -= 15;
 
 }
+if(dinheiro <= 0){
 
+document.getElementById("opcoes").innerHTML = "";
+
+document.getElementById("resultadoFinal").style.display = "block";
+
+document.getElementById("resultadoFinal").innerHTML = `
+
+<h1>💸 FALÊNCIA</h1>
+
+<p>
+Você ficou sem recursos financeiros para manter a fazenda.
+</p>
+
+<p>
+Mesmo boas intenções precisam de planejamento econômico.
+</p>
+
+`;
+
+return;
+}
 atualizarPainel();
 
 fase++;

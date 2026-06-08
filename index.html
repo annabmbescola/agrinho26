@@ -721,11 +721,8 @@ function atualizarPainel(){
 document.getElementById("dinheiro").innerText =
 dinheiro.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 
-document.getElementById("sustentabilidade").innerText =
-sustentabilidade + "%";
-
-document.getElementById("agua").innerText =
-agua + "%";
+document.getElementById("agua").textContent = `{agua}%`;
+document.getElementById("sustentabilidade").textContent = `{sustentabilidade}%`;
 
 document.getElementById("producao").innerText =
 producao;

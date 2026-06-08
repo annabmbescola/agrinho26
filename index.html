@@ -15,7 +15,7 @@
 <style>
   
 /* TIRA AS MARGENS, ESPAÇAMENTOS, FACILITA O CÁLCULO DOS TAMANHOS, DEFINE A FONTE COMO ARIAL */
-{
+*{
 margin:0;
 padding:0;
 box-sizing:border-box;
@@ -366,10 +366,10 @@ AGRINHO 2026 © Anna B. M.
 
 // VARIÁVEIS
 
-let dinheiro = 5.000.000;
+let dinheiro = 5_000_000;
 let sustentabilidade = 50;
 let agua = 50;
-let producao = 50;
+let producao = 50_000;
   
 // INDICA QUAL FASE O JOGADOR ESTÁ
 let fase = 0;
@@ -399,17 +399,17 @@ texto:"Você recebeu R$1.000.000 de crédito rural. Como você quer investir?",
 op:[
 {
 text:"Comprar mais terras e expandir a plantação",
-d:-1.000.000,
+d:-1000000,
 s:+10,
 a:-20,
-p:+10.000
+p:+10000
 },
 {
 text:"Investir na agricultura de precisão",
-d:-500.000,
+d:-500000,
 s:+10,
 a:+10,
-p:+3.000
+p:+3000
 }
 ]
 },
@@ -419,17 +419,17 @@ texto:"Um período de seca se aproxima. O que fazer?",
 op:[
 {
 text:"Construir um reservatório para armazenar e proteger a plantação",
-d:-50.000,
+d:-50000,
 s:+15,
 a:+20,
-p:+5.000
+p:+5000
 },
 {
 text:"Esperar pelas chuvas",
 d:0,
 s:-10,
 a:0,
-p:-2.000
+p:-2000
 }
 ]
 },
@@ -439,7 +439,7 @@ texto:"Um incêndio começou próximo da plantação.",
 op:[
 {
 text:"Pagar R$10.000 para contê-lo",
-d:-10.000,
+d:-10000,
 s:+15,
 a:-10,
 p:-500
@@ -449,7 +449,7 @@ text:"Deixar queimar",
 d:0,
 s:-50,
 a:-10,
-p:-2.000
+p:-2000
 }
 ]
 },
@@ -459,17 +459,17 @@ texto:"Há uma área de floresta em sua propriedade que está lhe ocupando espa�
 op:[
 {
 text:"Remover somente o necessário para a nova contrução",
-d:-1.000.000,
+d:-1000000,
 s:+5,
 a:+5,
 p:0
 },
 {
 text:"Desmatar a toda para ter mais espaço para algo inovador",
-d:-2.000.000,
+d:-2000000,
 s:-50,
 a:-5,
-p:+10.000
+p:+10000
 }
 ]
 },
@@ -479,10 +479,10 @@ texto:"Uma empresa te oferece energia solar em troca de uma parcela do seu terre
 op:[
 {
 text:"Aceitar e instalar painéis",
-d:-10.000,
+d:-10000,
 s:+35,
 a:0,
-p:-2.000
+p:-2000
 },
 {
 text:"Recusar a proposta",
@@ -499,17 +499,17 @@ texto:"Uma infestação de pragas atacou a lavoura.",
 op:[
 {
 text:"Constatar o controle biológico",
-d:-1.000.000,
+d:-1000000,
 s:+25,
 a:+5,
-p:+4.000
+p:+4000
 },
 {
 text:"Uso excessivo de químicos para acabar com as pragas",
-d:-100.000,
+d:-100000,
 s:-25,
 a:-15,
-p:-1.000
+p:-1000
 }
 ]
 },
@@ -519,10 +519,10 @@ texto:" Uma rede de supermercados quer comprar e vender seus produtos, desde que
 op:[
 {
 text:"Adequar a fazenda às exigências do comprador",
-d:+10.000.000,
+d:+10000000,
 s:+20,
 a:-60,
-p:+10.000
+p:-20000
 },
 {
 text:"Recusar a oferta",
@@ -539,17 +539,17 @@ texto:"Uma nascente foi encontrada na sua propriedade.",
 op:[
 {
 text:"Proteger a nascente somente em prol da sustentabilidade",
-d:-1.000.000,
+d:-1000000,
 s:+70,
 a:+80,
-p:+3.000
+p:+3000
 },
 {
 text:"Vender esse terreno para o governo contruir novas estradas e acabar com a nascente",
-d:+5.000.000,
+d:+5000000,
 s:-80,
 a:-95,
-p:-5.000
+p:-5000
 }
 ]
 },
@@ -559,7 +559,7 @@ texto:"Você possui crédito de carbono disponível.",
 op:[
 {
 text:"Resgatar mas perder R$5.000.000",
-d:-5.000.000,
+d:-5000000,
 s:+30,
 a:+20,
 p:0
@@ -579,10 +579,10 @@ texto:"Tecnologia de monitoramento por drones é a última tendência. Deseja ad
 op:[
 {
 text:"Investir",
-d:-2.000.000,
+d:-2000000,
 s:+15,
 a:+10,
-p:+8.000
+p:+8000
 },
 {
 text:"Não investir",
@@ -599,30 +599,30 @@ texto:"Uma onda de chuva extrema atingiu a região.",
 op:[
 {
 text:"Investir em drenagem",
-d:-2.000.000,
+d:-2000000,
 s:+10,
 a:+15,
-p:+10.000
+p:+10000
 },
 {
 text:"Não fazer nada",
 d:0,
 s:-15,
 a:-10,
-p:-10.000
+p:-10000
 }
 ]
 },
 
 {
-texto:"🏫 Universidade oferece parceria tecnológica.",
+texto:"Uma universidade oferece parceria tecnológica.",
 op:[
 {
 text:"Aceitar",
-d:-10,
+d:-50000,
 s:+20,
 a:+10,
-p:+20
+p:+20000
 },
 {
 text:"Recusar",
@@ -635,18 +635,18 @@ p:0
 },
 
 {
-texto:"🌱 Plantio direto reduz erosão.",
+texto:"Pesquisas apontam que o plantio direto reduz a erosão.",
 op:[
 {
 text:"Implementar",
-d:-15,
+d:-1500000,
 s:+25,
 a:+10,
-p:+10
+p:+10.000
 },
 {
 text:"Continuar sistema antigo",
-d:+10,
+d:+1000000,
 s:-15,
 a:-10,
 p:0
@@ -655,14 +655,14 @@ p:0
 },
 
 {
-texto:"🚛 Exportação para outro país.",
+texto:"Você recebe uma proposta de exportação para outro país.",
 op:[
 {
-text:"Cumprir exigências ambientais",
-d:+60,
-s:+20,
-a:+5,
-p:+15
+text:"Cumprir exigências ambientais e aceitar",
+d:+50000000,
+s:+40,
+a:+25,
+p:-30.000
 },
 {
 text:"Não exportar",
@@ -675,7 +675,7 @@ p:0
 },
 
 {
-texto:"🏆 Ano de 2050 chegou. Uma auditoria avalia sua fazenda.",
+texto:"0 ano de 2050 chegou. Uma auditoria deve avalia sua fazenda.",
 op:[
 {
 text:"Receber avaliação",

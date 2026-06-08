@@ -710,34 +710,37 @@ p:0
 }
 
 ];
+  
 function iniciarJogo(){
-document.getElementById("simArea").style.display="block";
-atualizarPainel();
-mostrarPergunta();
+    document.getElementById("simArea").style.display="block";
+    atualizarPainel(); // Esta linha garante que os números atualizem no segundo que você clica em "Iniciar"
+    mostrarPergunta();
 }
 
 function atualizarPainel(){
 
-    document.getElementById("dinheiro").innerText = 
+    document.getElementById("dinheiro").innerText =
         dinheiro.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 
-    // Correção aplicada aqui: adicionado o símbolo de $
-    document.getElementById("agua").textContent = `${agua}%`;
-    document.getElementById("sustentabilidade").textContent = `${sustentabilidade}%`;
+    // Atualiza o texto com o número atual e o símbolo de % dentro dos quadradinhos
+    document.getElementById("agua").textContent = agua + "%";
+    document.getElementById("sustentabilidade").textContent = sustentabilidade + "%";
 
-    document.getElementById("producao").innerText = producao;
+    // Atualiza o número da produção
+    document.getElementById("producao").innerText = producao.toLocaleString("pt-BR");
 
-    // BARRA SUSTENTABILIDADE
-    document.getElementById("barraSus").style.width = 
+    // BARRA SUSTENTABILIDADE (Preenchimento visual)
+    document.getElementById("barraSus").style.width =
         Math.max(0, Math.min(100, sustentabilidade)) + "%";
 
-    // BARRA ÁGUA
-    document.getElementById("barraAgua").style.width = 
+    // BARRA ÁGUA (Preenchimento visual)
+    document.getElementById("barraAgua").style.width =
         Math.max(0, Math.min(100, agua)) + "%";
 
-    // BARRA PRODUÇÃO (normalizada)
-    document.getElementById("barraProd").style.width = 
+    // BARRA PRODUÇÃO (Preenchimento visual normalizado)
+    document.getElementById("barraProd").style.width =
         Math.max(0, Math.min(100, producao / 1000)) + "%";
+
 }
 function eventoAleatorio(){
   let sorteio = Math.floor(Math.random()*5);

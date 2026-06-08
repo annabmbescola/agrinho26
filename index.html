@@ -708,7 +708,8 @@ mostrarPergunta();
 
 function atualizarPainel(){
 
-document.getElementById("dinheiro").innerText = dinheiro;
+document.getElementById("dinheiro").innerText =
+dinheiro.toLocaleString("pt-BR");
 
 document.getElementById("sustentabilidade").innerText = sustentabilidade;
 
@@ -823,10 +824,11 @@ sustentabilidade += op.s;
 agua += op.a;
 producao += op.p;
 
-  sustentabilidade = Math.max(0, Math.min(100, sustentabilidade));
+sustentabilidade = Math.max(0, Math.min(100, sustentabilidade));
 agua = Math.max(0, Math.min(100, agua));
-producao = Math.max(0, Math.min(100, producao));
+producao = Math.max(0, producao);
 
+  
 // bônus sustentável
 
 if(sustentabilidade >= 80){
@@ -971,7 +973,7 @@ resultado +
 
 <h3>📊 Relatório Final</h3>
 
-<p>💰 Dinheiro: R$ ${dinheiro}</p>
+<p>💰 Dinheiro: R$ ${dinheiro.toLocaleString("pt-BR")}</p>
 
 <p>🌱 Sustentabilidade: ${sustentabilidade}</p>
 

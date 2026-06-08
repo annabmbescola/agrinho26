@@ -364,20 +364,17 @@ AGRINHO 2026 © Anna B. M.
 <!-- JAVASCRIPT  -->
 <script>
 
-  // Comentário de uma linha
-// ==========================
-// VARIÁVEIS DO JOGO
-// ==========================
+// VARIÁVEIS
 
-let dinheiro = 100;
+let dinheiro = 5.000.000;
 let sustentabilidade = 50;
 let agua = 50;
 let producao = 50;
-
   
-
+// INDICA QUAL FASE O JOGADOR ESTÁ
 let fase = 0;
 
+// DEFININDO LISTAS VARIÁVEIS
 const anos = [
 2025,
 2027,
@@ -396,105 +393,101 @@ const anos = [
 2050
 ];
 
-// ==========================
-// DECISÕES
-// ==========================
-
 const perguntas = [
 {
-texto:"🚜 Você recebeu R$100 de crédito rural. Como investir?",
+texto:"Você recebeu R$1.000.000 de crédito rural. Como você quer investir?",
 op:[
 {
-text:"Comprar mais terras",
-d:+30,
-s:-10,
-a:-5,
-p:+25
+text:"Comprar mais terras e expandir a plantação",
+d:-1.000.000,
+s:+10,
+a:-20,
+p:+10.000
 },
 {
-text:"Agricultura de precisão",
-d:-20,
-s:+20,
+text:"Investir na agricultura de precisão",
+d:-500.000,
+s:+10,
 a:+10,
-p:+15
+p:+3.000
 }
 ]
 },
 
 {
-texto:"💧 A seca está chegando. O que fazer?",
+texto:"Um período de seca se aproxima. O que fazer?",
 op:[
 {
-text:"Construir reservatório",
-d:-40,
+text:"Construir um reservatório para armazenar e proteger a plantação",
+d:-50.000,
 s:+15,
-a:+30,
-p:+10
+a:+20,
+p:+5.000
 },
 {
 text:"Esperar pelas chuvas",
 d:0,
 s:-10,
-a:-20,
-p:-20
+a:0,
+p:-2.000
 }
 ]
 },
 
 {
-texto:"🔥 Um incêndio começou próximo da plantação.",
+texto:"Um incêndio começou próximo da plantação.",
 op:[
 {
-text:"Pagar R$50 para conter",
-d:-50,
-s:+25,
-a:+10,
-p:-5
+text:"Pagar R$10.000 para contê-lo",
+d:-10.000,
+s:+15,
+a:-10,
+p:-500
 },
 {
 text:"Deixar queimar",
 d:0,
 s:-50,
-a:-20,
-p:-40
-}
-]
-},
-
-{
-texto:"🌳 Há uma área de floresta em sua propriedade.",
-op:[
-{
-text:"Preservar",
-d:0,
-s:+25,
-a:+15,
-p:+5
-},
-{
-text:"Desmatar",
-d:+50,
-s:-40,
 a:-10,
-p:+25
+p:-2.000
 }
 ]
 },
 
 {
-texto:"⚡ Empresa oferece energia solar.",
+texto:"Há uma área de floresta em sua propriedade que está lhe ocupando espaço.",
 op:[
 {
-text:"Instalar painéis",
-d:-60,
+text:"Remover somente o necessário para a nova contrução",
+d:-1.000.000,
+s:+5,
+a:+5,
+p:0
+},
+{
+text:"Desmatar a toda para ter mais espaço para algo inovador",
+d:-2.000.000,
+s:-50,
+a:-5,
+p:+10.000
+}
+]
+},
+
+{
+texto:"Uma empresa te oferece energia solar em troca de uma parcela do seu terreno.",
+op:[
+{
+text:"Aceitar e instalar painéis",
+d:-10.000,
 s:+35,
 a:0,
-p:+10
+p:-2.000
 },
 {
-text:"Recusar",
+text:"Recusar a proposta",
 d:0,
-s:-5,
+s:-20,
 a:0,
 p:0
 }
@@ -502,37 +495,37 @@ p:0
 },
 
 {
-texto:"🐛 Uma praga atacou a lavoura.",
+texto:"Uma infestação de pragas atacou a lavoura.",
 op:[
 {
-text:"Controle biológico",
-d:-20,
+text:"Constatar o controle biológico",
+d:-1.000.000,
 s:+25,
 a:+5,
-p:+15
+p:+4.000
 },
 {
-text:"Uso excessivo de químicos",
-d:+20,
+text:"Uso excessivo de químicos para acabar com as pragas",
+d:-100.000,
 s:-25,
 a:-15,
-p:+20
+p:-1.000
 }
 ]
 },
 
 {
-texto:"🚚 Rede de supermercados quer produtos certificados.",
+texto:" Uma rede de supermercados quer comprar e vender seus produtos, desde que sejam certificados.",
 op:[
 {
-text:"Adequar fazenda",
-d:-25,
+text:"Adequar a fazenda às exigências do comprador",
+d:+10.000.000,
 s:+20,
-a:+10,
-p:+10
+a:-60,
+p:+10.000
 },
 {
-text:"Recusar",
+text:"Recusar a oferta",
 d:0,
 s:-10,
 a:0,
@@ -542,39 +535,39 @@ p:0
 },
 
 {
-texto:"🏞️ Uma nascente foi encontrada na propriedade.",
+texto:"Uma nascente foi encontrada na sua propriedade.",
 op:[
 {
-text:"Proteger",
-d:-10,
-s:+25,
-a:+25,
-p:+5
+text:"Proteger a nascente somente em prol da sustentabilidade",
+d:-1.000.000,
+s:+70,
+a:+80,
+p:+3.000
 },
 {
-text:"Usar sem controle",
-d:+20,
-s:-20,
-a:-25,
-p:+15
+text:"Vender esse terreno para o governo contruir novas estradas e acabar com a nascente",
+d:+5.000.000,
+s:-80,
+a:-95,
+p:-5.000
 }
 ]
 },
 
 {
-texto:"🌎 Crédito de carbono disponível.",
+texto:"Você possui crédito de carbono disponível.",
 op:[
 {
-text:"Participar do programa",
-d:+40,
-s:+20,
-a:+10,
+text:"Resgatar mas perder R$5.000.000",
+d:-5.000.000,
+s:+30,
+a:+20,
 p:0
 },
 {
 text:"Ignorar",
 d:0,
-s:-5,
+s:-10,
 a:0,
 p:0
 }
@@ -582,14 +575,14 @@ p:0
 },
 
 {
-texto:"🤖 Tecnologia de monitoramento por drones.",
+texto:"Tecnologia de monitoramento por drones é a última tendência. Deseja adquirir?",
 op:[
 {
 text:"Investir",
-d:-35,
+d:-2.000.000,
 s:+15,
 a:+10,
-p:+20
+p:+8.000
 },
 {
 text:"Não investir",
@@ -602,21 +595,21 @@ p:0
 },
 
 {
-texto:"🌧️ Chuva extrema atingiu a região.",
+texto:"Uma onda de chuva extrema atingiu a região.",
 op:[
 {
 text:"Investir em drenagem",
-d:-30,
+d:-2.000.000,
 s:+10,
 a:+15,
-p:+10
+p:+10.000
 },
 {
 text:"Não fazer nada",
 d:0,
 s:-15,
 a:-10,
-p:-20
+p:-10.000
 }
 ]
 },
@@ -697,10 +690,8 @@ p:0
 ];
 
   
-// ==========================
-// INICIAR
-// ==========================
 
+// FUNÇÃO PARA INICIAR O JOGO
 function iniciarJogo(){
 
 document.getElementById("simArea").style.display = "block";

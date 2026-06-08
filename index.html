@@ -745,52 +745,6 @@ Math.max(0, Math.min(100, producao / 1000)) + "%";
 }
 
 function eventoAleatorio(){
-
-let sorteio = Math.floor(Math.random()*5);
-
-if(sorteio === 0){
-document.getElementById("evento").innerHTML="🌧️ Chuvas favoreceram a produção.";
-producao += 10;
-dinheiro += 100000;
-}
-
-if(sorteio === 1){
-document.getElementById("evento").innerHTML="☀️ Clima estável favoreceu a lavoura.";
-producao += 5000;
-dinheiro += 50000;
-}
-
-if(sorteio === 2){
-document.getElementById("evento").innerHTML="📈 Alta no preço dos grãos.";
-dinheiro += 150000;
-}
-
-if(sorteio === 3){
-document.getElementById("evento").innerHTML="🐝 Polinizadores aumentaram a produtividade.";
-producao += 8000;
-sustentabilidade += 10;
-}
-
-if(sorteio === 4){
-document.getElementById("evento").innerHTML="⚠️ Fiscalização ambiental na região.";
-if(sustentabilidade < 40){
-dinheiro -= 500000;
-}
-}
-
-}
-
-function mostrarPergunta(){
-
-if(fase >= perguntas.length){
-finalizarJogo();
-return;
-}
-
-document.getElementById("anoAtual").innerText =
-"📅 Ano: " + anos[fase];
-
-function eventoAleatorio(){
   let sorteio = Math.floor(Math.random()*5);
 
   if(sorteio === 0){
@@ -812,7 +766,6 @@ function eventoAleatorio(){
 
   if(sorteio === 3){
     document.getElementById("evento").innerHTML="🐝 Polinizadores aumentaram a produtividade.";
-    producao += 8000;
     sustentabilidade += 10;
   }
 
@@ -823,8 +776,50 @@ function eventoAleatorio(){
     }
   }
 
-  atualizarPainel(); // 🔥 ISSO AQUI FALTAVA
+  atualizarPainel();
 }
+function mostrarPergunta(){
+
+if(fase >= perguntas.length){
+finalizarJogo();
+return;
+}
+
+document.getElementById("anoAtual").innerText =
+"📅 Ano: " + anos[fase];
+
+eventoAleatorio(); // só chama
+
+let p = perguntas[fase];
+
+document.getElementById("pergunta").innerText = p.texto;
+
+let opcoes = document.getElementById("opcoes");
+opcoes.innerHTML = "";
+
+p.op.forEach(op=>{
+  let div = document.createElement("div");
+  div.classList.add("opcao");
+  div.innerText = op.text;
+
+  div.onclick = () => {
+    dinheiro += op.d;
+    sustentabilidade += op.s;
+    agua += op.a;
+    producao += op.p;
+
+    atualizarPainel();
+
+    setTimeout(() => {
+      fase++;
+      mostrarPergunta();
+    }, 300);
+  };
+
+  opcoes.appendChild(div);
+});
+}
+  
 function finalizarJogo(){
 
 let resultado="";

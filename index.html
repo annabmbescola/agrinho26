@@ -790,64 +790,41 @@ return;
 document.getElementById("anoAtual").innerText =
 "📅 Ano: " + anos[fase];
 
-eventoAleatorio();
+function eventoAleatorio(){
+  let sorteio = Math.floor(Math.random()*5);
 
-let p = perguntas[fase];
+  if(sorteio === 0){
+    document.getElementById("evento").innerHTML="🌧️ Chuvas favoreceram a produção.";
+    producao += 10;
+    dinheiro += 100000;
+  }
 
-document.getElementById("pergunta").innerText = p.texto;
+  if(sorteio === 1){
+    document.getElementById("evento").innerHTML="☀️ Clima estável favoreceu a lavoura.";
+    producao += 5000;
+    dinheiro += 50000;
+  }
 
-let opcoes = document.getElementById("opcoes");
-opcoes.innerHTML = "";
+  if(sorteio === 2){
+    document.getElementById("evento").innerHTML="📈 Alta no preço dos grãos.";
+    dinheiro += 150000;
+  }
 
-p.op.forEach(op=>{
+  if(sorteio === 3){
+    document.getElementById("evento").innerHTML="🐝 Polinizadores aumentaram a produtividade.";
+    producao += 8000;
+    sustentabilidade += 10;
+  }
 
-let div = document.createElement("div");
-div.classList.add("opcao");
-div.innerText = op.text;
+  if(sorteio === 4){
+    document.getElementById("evento").innerHTML="⚠️ Fiscalização ambiental na região.";
+    if(sustentabilidade < 40){
+      dinheiro -= 500000;
+    }
+  }
 
-div.onclick = ()=>{
-
-dinheiro += op.d;
-sustentabilidade += op.s;
-agua += op.a;
-producao += op.p;
-
-sustentabilidade = Math.max(0,Math.min(100,sustentabilidade));
-agua = Math.max(0,Math.min(100,agua));
-producao = Math.max(0,producao);
-
-if(sustentabilidade >= 80){
-dinheiro += 500000;
-document.getElementById("evento").innerHTML =
-"🏆 Certificação sustentável conquistada!";
+  atualizarPainel(); // 🔥 ISSO AQUI FALTAVA
 }
-
-if(sustentabilidade <= 20){
-dinheiro -= 500000;
-producao -= 5000;
-}
-
-if(agua <= 20){
-producao -= 5000;
-}
-
-if(dinheiro <= 0){
-document.getElementById("opcoes").innerHTML="";
-document.getElementById("resultadoFinal").style.display="block";
-document.getElementById("resultadoFinal").innerHTML=
-"<h1>💸 FALÊNCIA</h1><p>Você ficou sem dinheiro.</p>";
-return;
-}
-
-atualizarPainel();
-fase++;
-mostrarPergunta();
-};
-
-opcoes.appendChild(div);
-});
-}
-
 function finalizarJogo(){
 
 let resultado="";

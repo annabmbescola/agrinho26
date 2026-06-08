@@ -337,33 +337,21 @@ Ano: 2025
 </div>
 
 <div class="indicador">
-
-<h3>🌱 Sustentabilidade</h3>
-
-<div class="valor" id="sustentabilidade">
-50
-</div>
-
-<div class="barra">
-<div class="progresso" id="barraSus"></div>
-</div>
-
-</div>
-
+    <h3>🌱 Sustentabilidade</h3>
+    <div class="valor" id="sustentabilidadeTexto">50%</div> 
+    <div class="barra">
+        <div class="progresso" id="barraSus"></div>
+    </div>
+</div> 
+  
 <div class="indicador">
-
-<h3>💧 Água</h3>
-
-<div class="valor" id="agua">
-50
+    <h3>💧 Água</h3>
+    <div class="valor" id="aguaTexto">50%</div>
+    <div class="barra">
+        <div class="progresso" id="barraAgua"></div>
+    </div>
 </div>
-
-<div class="barra">
-<div class="progresso" id="barraAgua"></div>
-</div>
-
-</div>
-
+  
 <div class="indicador">
 
 <h3>🚜 Produção</h3>
@@ -719,14 +707,15 @@ function iniciarJogo(){
 
 function atualizarPainel(){
 
+    // Atualiza o dinheiro na tela
     document.getElementById("dinheiro").innerText =
         dinheiro.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 
-    // Atualiza o texto com o número atual e o símbolo de % dentro dos quadradinhos
-    document.getElementById("agua").textContent = agua + "%";
-    document.getElementById("sustentabilidade").textContent = sustentabilidade + "%";
+    // CORREÇÃO: Agora o JavaScript busca o ID do texto sem confundir com a variável!
+    document.getElementById("aguaTexto").textContent = agua + "%";
+    document.getElementById("sustentabilidadeTexto").textContent = sustentabilidade + "%";
 
-    // Atualiza o número da produção
+    // Atualiza a produção na tela
     document.getElementById("producao").innerText = producao.toLocaleString("pt-BR");
 
     // BARRA SUSTENTABILIDADE (Preenchimento visual)
@@ -741,7 +730,7 @@ function atualizarPainel(){
     document.getElementById("barraProd").style.width =
         Math.max(0, Math.min(100, producao / 1000)) + "%";
 
-}
+} 
 function eventoAleatorio(){
   let sorteio = Math.floor(Math.random()*5);
 

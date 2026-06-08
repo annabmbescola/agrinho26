@@ -4,45 +4,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<!-- RECONHECE O ALFABETO, ADAPTA O SITE PARA CELULARES E MOSTRA O TEXTO EXIBIDO NA ABA DO NAVEGADOR -->
+<!-- CABEÇALHO DA PÁGINA. RECONHECE O ALFABETO, ADAPTA O SITE PARA CELULARES E MOSTRA O TEXTO EXIBIDO NA ABA DO NAVEGADOR -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>O Agro Vai Sustentar o Futuro?</title>
 
 <!-- CSS -->
-<style>
 
-*{
+<style>
+  
+/* TIRA AS MARGENS, ESPAÇAMENTOS, FACILITA O CÁLCULO DOS TAMANHOS, DEFINE A FONTE COMO ARIAL */
+{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Arial, Helvetica, sans-serif;
 }
 
+/* CORPO DO SITE, TUDO QUE APARECE NELE. FUNDO E COR DO TEXTO */
 body{
 background:#f4f8f4;
 color:#222;
 }
 
+/* CABEÇALHO DO SITE. COR DO FUNDO EM DEGRADÊ, TEXTO BRANCO, TAMANHO E CENTRALIZAÇÃO DO TEXTO */
 header{
 background:linear-gradient(135deg,#1b5e20,#4caf50);
 color:white;
 padding:70px 20px;
 text-align:center;
 }
-
 header h1{
 font-size:3rem;
 margin-bottom:15px;
 }
-
 header p{
 font-size:1.2rem;
 max-width:800px;
 margin:auto;
 }
 
+/* DEFINE A COR DO "MENU" E FAZ ELE FICAR SEMPRE APARECENDO NO TOPO DA PÁGINA FIXADO  */
 nav{
 background:#114416;
 padding:15px;
@@ -51,23 +54,21 @@ top:0;
 z-index:999;
 text-align:center;
 }
-
 nav a{
 color:white;
 text-decoration:none;
 margin:0 12px;
 font-weight:bold;
 }
-
 section{
 padding:60px 10%;
 }
-
 h2{
 color:#2e7d32;
 margin-bottom:20px;
 }
 
+/* CRIA OS BLOCOS BRANCOS ARREDONDADOS QUE COMPORTAM OS TEXTOS INFORMATIVOS */
 .card{
 background:white;
 padding:25px;
@@ -75,17 +76,16 @@ border-radius:15px;
 margin-top:20px;
 box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
-
 .hero{
 text-align:center;
 }
-
 .hero img{
 max-width:100%;
 border-radius:20px;
 margin-top:20px;
 }
 
+/* DEFINE A COR DO BOTÃO E O TAMANHO */
 button{
 width:100%;
 padding:15px;
@@ -97,11 +97,11 @@ font-size:1rem;
 cursor:pointer;
 transition:.3s;
 }
-
 button:hover{
 background:#1b5e20;
 }
-
+  
+/* SIMULADOR. COMEÇA ESCONDIDO E SÓ APARECE QUANDO O USUÁRIO CLICAR EM INICIAR SIMULAÇÃO */
 #simArea{
 display:none;
 margin-top:30px;
@@ -110,32 +110,27 @@ padding:25px;
 border-radius:15px;
 box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
-
 .status{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:15px;
 margin-bottom:30px;
 }
-
 .indicador{
 background:#f1f8e9;
 padding:15px;
 border-radius:12px;
 text-align:center;
 }
-
 .indicador h3{
 font-size:1rem;
 margin-bottom:10px;
 }
-
 .valor{
 font-size:1.6rem;
 font-weight:bold;
 color:#1b5e20;
 }
-
 .barra{
 height:12px;
 background:#ddd;
@@ -143,21 +138,18 @@ border-radius:20px;
 overflow:hidden;
 margin-top:10px;
 }
-
 .progresso{
 height:100%;
 width:50%;
 background:#4caf50;
 transition:.5s;
 }
-
 #anoAtual{
 font-size:1.3rem;
 font-weight:bold;
 color:#1b5e20;
 margin-bottom:20px;
 }
-
 #evento{
 background:#fff8e1;
 padding:15px;
@@ -165,12 +157,10 @@ border-radius:10px;
 margin-bottom:20px;
 font-weight:bold;
 }
-
 #pergunta{
 font-size:1.4rem;
 margin-bottom:20px;
 }
-
 .opcao{
 background:#2e7d32;
 color:white;
@@ -180,12 +170,10 @@ margin-top:12px;
 cursor:pointer;
 transition:.3s;
 }
-
 .opcao:hover{
 transform:scale(1.02);
 background:#1b5e20;
 }
-
 #resultadoFinal{
 display:none;
 margin-top:30px;
@@ -193,7 +181,6 @@ background:#e8f5e9;
 padding:30px;
 border-radius:15px;
 }
-
 footer{
 background:#114416;
 color:white;
@@ -201,7 +188,6 @@ text-align:center;
 padding:30px;
 margin-top:50px;
 }
-
 .badge{
 display:inline-block;
 padding:8px 15px;
@@ -211,27 +197,26 @@ border-radius:30px;
 margin-top:10px;
 }
 
+/* ACABOU O CSS */
 </style>
 
+<!-- VOLTA PRO HTML -->
 </head>
-
 <body>
 
+  <!-- CABEÇALHO PRINCIPAL QUE APARECE NA TELA E SUBTÍTULO -->
 <header>
-
-<h1>🌱 AGRINHO 2050</h1>
-
+<h1>O Agro Vai Sustentar o Futuro?</h1>
 <p>
 As decisões tomadas no campo hoje determinam o futuro da produção,
 da água, da economia e da qualidade de vida nas cidades.
 </p>
-
 <div class="badge">
-Simulador Estratégico de Sustentabilidade
+Simulador de Sustentabilidade
 </div>
-
 </header>
 
+<!-- CADA  -->
 <nav>
 <a href="#sustentabilidade">Sustentabilidade</a>
 <a href="#impactos">Impactos</a>

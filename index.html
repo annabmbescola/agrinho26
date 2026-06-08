@@ -771,48 +771,57 @@ function eventoAleatorio(){
     }
   }
 
+  // Garante que os eventos aleatórios também respeitem o limite de 0 a 100
+  sustentabilidade = Math.max(0, Math.min(100, sustentabilidade));
+  agua = Math.max(0, Math.min(100, agua));
+
   atualizarPainel();
 }
+
 function mostrarPergunta(){
 
-if(fase >= perguntas.length){
-finalizarJogo();
-return;
-}
+  if(fase >= perguntas.length){
+    finalizarJogo();
+    return;
+  }
 
-document.getElementById("anoAtual").innerText =
-"📅 Ano: " + anos[fase];
+  document.getElementById("anoAtual").innerText =
+  "📅 Ano: " + anos[fase];
 
-eventoAleatorio(); // só chama
+  eventoAleatorio(); // chama o evento e atualiza o painel
 
-let p = perguntas[fase];
+  let p = perguntas[fase];
 
-document.getElementById("pergunta").innerText = p.texto;
+  document.getElementById("pergunta").innerText = p.texto;
 
-let opcoes = document.getElementById("opcoes");
-opcoes.innerHTML = "";
+  let opcoes = document.getElementById("opcoes");
+  opcoes.innerHTML = "";
 
-p.op.forEach(op=>{
-  let div = document.createElement("div");
-  div.classList.add("opcao");
-  div.innerText = op.text;
+  p.op.forEach(op=>{
+    let div = document.createElement("div");
+    div.classList.add("opcao");
+    div.innerText = op.text;
 
-  div.onclick = () => {
-    dinheiro += op.d;
-    sustentabilidade += op.s;
-    agua += op.a;
-    producao += op.p;
+    div.onclick = () => {
+      dinheiro += op.d;
+      sustentabilidade += op.s;
+      agua += op.a;
+      producao += op.p;
 
-    atualizarPainel();
+      // TRAVA DE SEGURANÇA: Impede que passe de 100 ou fique menor que 0
+      sustentabilidade = Math.max(0, Math.min(100, sustentabilidade));
+      agua = Math.max(0, Math.min(100, agua));
 
-    setTimeout(() => {
-      fase++;
-      mostrarPergunta();
-    }, 300);
-  };
+      atualizarPainel();
 
-  opcoes.appendChild(div);
-});
+      setTimeout(() => {
+        fase++;
+        mostrarPergunta();
+      }, 300);
+    };
+
+    opcoes.appendChild(div);
+  });
 }
   
 function finalizarJogo(){

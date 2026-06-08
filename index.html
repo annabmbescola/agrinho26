@@ -416,128 +416,300 @@ const anos = [
 ];
 
 const perguntas = [
-
 {
 texto:"Você recebeu R$1.000.000 de crédito rural. Como você quer investir?",
 op:[
-{ text:"Comprar mais terras e expandir a plantação", d:-1000000, s:+10, a:-20, p:+10000 },
-{ text:"Investir na agricultura de precisão", d:-500000, s:+10, a:+10, p:+3000 }
+{
+text:"Comprar mais terras e expandir a plantação",
+d:-1000000,
+s:+10,
+a:-20,
+p:+10000
+},
+{
+text:"Investir na agricultura de precisão",
+d:-500000,
+s:+10,
+a:+10,
+p:+3000
+}
 ]
 },
 
 {
 texto:"Um período de seca se aproxima. O que fazer?",
 op:[
-{ text:"Construir um reservatório", d:-50000, s:+15, a:+20, p:+5000 },
-{ text:"Esperar pelas chuvas", d:0, s:-10, a:0, p:-2000 }
+{
+text:"Construir um reservatório para armazenar e proteger a plantação",
+d:-50000,
+s:+15,
+a:+20,
+p:+5000
+},
+{
+text:"Esperar pelas chuvas",
+d:0,
+s:-10,
+a:0,
+p:-2000
+}
 ]
 },
 
 {
 texto:"Um incêndio começou próximo da plantação.",
 op:[
-{ text:"Pagar para contê-lo", d:-10000, s:+15, a:-10, p:-500 },
-{ text:"Deixar queimar", d:0, s:-50, a:-10, p:-2000 }
+{
+text:"Pagar R$10.000 para contê-lo",
+d:-10000,
+s:+15,
+a:-10,
+p:-500
+},
+{
+text:"Deixar queimar",
+d:0,
+s:-50,
+a:-10,
+p:-2000
+}
 ]
 },
 
 {
-texto:"Há uma área de floresta na propriedade.",
+texto:"Há uma área de floresta em sua propriedade que está lhe ocupando espaço.",
 op:[
-{ text:"Remover somente o necessário para construção", d:-1000000, s:+5, a:+5, p:0 },
-{ text:"Desmatar toda a área", d:-2000000, s:-50, a:-5, p:+10000 }
+{
+text:"Remover somente o necessário para a nova contrução",
+d:-1000000,
+s:+5,
+a:+5,
+p:0
+},
+{
+text:"Desmatar a toda para ter mais espaço para algo inovador",
+d:-2000000,
+s:-50,
+a:-5,
+p:+10000
+}
 ]
 },
 
 {
-texto:"Uma empresa oferece energia solar.",
+texto:"Uma empresa te oferece energia solar em troca de uma parcela do seu terreno.",
 op:[
-{ text:"Aceitar e instalar painéis", d:-10000, s:+35, a:0, p:-2000 },
-{ text:"Recusar", d:0, s:-20, a:0, p:0 }
+{
+text:"Aceitar e instalar painéis",
+d:-10000,
+s:+35,
+a:0,
+p:-2000
+},
+{
+text:"Recusar a proposta",
+d:0,
+s:-20,
+a:0,
+p:0
+}
 ]
 },
 
 {
 texto:"Uma infestação de pragas atacou a lavoura.",
 op:[
-{ text:"Contratar controle biológico", d:-1000000, s:+25, a:+5, p:+4000 },
-{ text:"Usar químicos em excesso", d:-100000, s:-25, a:-15, p:-1000 }
+{
+text:"Constatar o controle biológico",
+d:-1000000,
+s:+25,
+a:+5,
+p:+4000
+},
+{
+text:"Uso excessivo de químicos para acabar com as pragas",
+d:-100000,
+s:-25,
+a:-15,
+p:-1000
+}
 ]
 },
 
 {
-texto:"Um supermercado quer seus produtos certificados.",
+texto:" Uma rede de supermercados quer comprar e vender seus produtos, desde que sejam certificados.",
 op:[
-{ text:"Adequar a fazenda", d:+10000000, s:+20, a:-60, p:-20000 },
-{ text:"Recusar", d:0, s:-10, a:0, p:0 }
+{
+text:"Adequar a fazenda às exigências do comprador",
+d:+10000000,
+s:+20,
+a:-60,
+p:-20000
+},
+{
+text:"Recusar a oferta",
+d:0,
+s:-10,
+a:0,
+p:0
+}
 ]
 },
 
 {
-texto:"Uma nascente foi encontrada na propriedade.",
+texto:"Uma nascente foi encontrada na sua propriedade.",
 op:[
-{ text:"Proteger a nascente", d:-1000000, s:+70, a:+80, p:+3000 },
-{ text:"Vender o terreno para construção de estrada", d:+5000000, s:-80, a:-95, p:-5000 }
+{
+text:"Proteger a nascente somente em prol da sustentabilidade",
+d:-1000000,
+s:+70,
+a:+80,
+p:+3000
+},
+{
+text:"Vender esse terreno para o governo contruir novas estradas e acabar com a nascente",
+d:+5000000,
+s:-80,
+a:-95,
+p:-5000
+}
 ]
 },
 
 {
-texto:"Você possui crédito de carbono.",
+texto:"Você possui crédito de carbono disponível.",
 op:[
-{ text:"Resgatar crédito (custo alto)", d:-5000000, s:+30, a:+20, p:0 },
-{ text:"Ignorar", d:0, s:-10, a:0, p:0 }
+{
+text:"Resgatar mas perder R$5.000.000",
+d:-5000000,
+s:+30,
+a:+20,
+p:0
+},
+{
+text:"Ignorar",
+d:0,
+s:-10,
+a:0,
+p:0
+}
 ]
 },
 
 {
-texto:"Tecnologia de drones disponível.",
+texto:"Tecnologia de monitoramento por drones é a última tendência. Deseja adquirir?",
 op:[
-{ text:"Investir", d:-2000000, s:+15, a:+10, p:+8000 },
-{ text:"Não investir", d:0, s:0, a:0, p:0 }
+{
+text:"Investir",
+d:-2000000,
+s:+15,
+a:+10,
+p:+8000
+},
+{
+text:"Não investir",
+d:0,
+s:0,
+a:0,
+p:0
+}
 ]
 },
 
 {
-texto:"Chuva extrema atingiu a região.",
+texto:"Uma onda de chuva extrema atingiu a região.",
 op:[
-{ text:"Investir em drenagem", d:-2000000, s:+10, a:+15, p:+10000 },
-{ text:"Não fazer nada", d:0, s:-15, a:-10, p:-10000 }
+{
+text:"Investir em drenagem",
+d:-2000000,
+s:+10,
+a:+15,
+p:+10000
+},
+{
+text:"Não fazer nada",
+d:0,
+s:-15,
+a:-10,
+p:-10000
+}
 ]
 },
 
 {
-texto:"Universidade oferece parceria tecnológica.",
+texto:"Uma universidade oferece parceria tecnológica.",
 op:[
-{ text:"Aceitar", d:-50000, s:+20, a:+10, p:+20000 },
-{ text:"Recusar", d:0, s:0, a:0, p:0 }
+{
+text:"Aceitar",
+d:-50000,
+s:+20,
+a:+10,
+p:+20000
+},
+{
+text:"Recusar",
+d:0,
+s:0,
+a:0,
+p:0
+}
 ]
 },
 
 {
-texto:"Plantio direto reduz erosão.",
+texto:"Pesquisas apontam que o plantio direto reduz a erosão.",
 op:[
-{ text:"Implementar", d:-1500000, s:+25, a:+10, p:+10000 },
-{ text:"Continuar sistema antigo", d:+1000000, s:-15, a:-10, p:0 }
+{
+text:"Implementar",
+d:-1500000,
+s:+25,
+a:+10,
+p:+10000
+},
+{
+text:"Continuar sistema antigo",
+d:+1000000,
+s:-15,
+a:-10,
+p:0
+}
 ]
 },
 
 {
-texto:"Proposta de exportação internacional.",
+texto:"Você recebe uma proposta de exportação para outro país.",
 op:[
-{ text:"Aceitar com exigências ambientais", d:+50000000, s:+40, a:+25, p:-30000 },
-{ text:"Não exportar", d:+10, s:0, a:0, p:0 }
+{
+text:"Cumprir exigências ambientais e aceitar",
+d:+50000000,
+s:+40,
+a:+25,
+p:-30000
+},
+{
+text:"Não exportar",
+d:+10,
+s:0,
+a:0,
+p:0
+}
 ]
 },
 
 {
-texto:"O ano de 2050 chegou. Auditoria final.",
+texto:"0 ano de 2050 chegou. Uma auditoria deve avalia sua fazenda.",
 op:[
-{ text:"Ver resultado final", d:0, s:0, a:0, p:0 }
+{
+text:"Receber avaliação",
+d:0,
+s:0,
+a:0,
+p:0
+}
 ]
 }
 
 ];
-
 function iniciarJogo(){
 document.getElementById("simArea").style.display="block";
 atualizarPainel();

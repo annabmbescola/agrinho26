@@ -718,29 +718,27 @@ mostrarPergunta();
 
 function atualizarPainel(){
 
-document.getElementById("dinheiro").innerText =
-dinheiro.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+    document.getElementById("dinheiro").innerText = 
+        dinheiro.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 
-document.getElementById("agua").textContent = `{agua}%`;
-document.getElementById("sustentabilidade").textContent = `{sustentabilidade}%`;
+    // Correção aplicada aqui: adicionado o símbolo de $
+    document.getElementById("agua").textContent = `${agua}%`;
+    document.getElementById("sustentabilidade").textContent = `${sustentabilidade}%`;
 
-document.getElementById("producao").innerText =
-producao;
+    document.getElementById("producao").innerText = producao;
 
-// BARRA SUSTENTABILIDADE
-document.getElementById("barraSus").style.width =
-Math.max(0, Math.min(100, sustentabilidade)) + "%";
+    // BARRA SUSTENTABILIDADE
+    document.getElementById("barraSus").style.width = 
+        Math.max(0, Math.min(100, sustentabilidade)) + "%";
 
-// BARRA ÁGUA
-document.getElementById("barraAgua").style.width =
-Math.max(0, Math.min(100, agua)) + "%";
+    // BARRA ÁGUA
+    document.getElementById("barraAgua").style.width = 
+        Math.max(0, Math.min(100, agua)) + "%";
 
-// BARRA PRODUÇÃO (normalizada)
-document.getElementById("barraProd").style.width =
-Math.max(0, Math.min(100, producao / 1000)) + "%";
-
+    // BARRA PRODUÇÃO (normalizada)
+    document.getElementById("barraProd").style.width = 
+        Math.max(0, Math.min(100, producao / 1000)) + "%";
 }
-
 function eventoAleatorio(){
   let sorteio = Math.floor(Math.random()*5);
 

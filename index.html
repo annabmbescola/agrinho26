@@ -558,14 +558,17 @@ agua + "%";
 document.getElementById("producao").innerText =
 producao;
 
+// BARRA SUSTENTABILIDADE
 document.getElementById("barraSus").style.width =
-Math.max(0,Math.min(100,sustentabilidade)) + "%";
+Math.max(0, Math.min(100, sustentabilidade)) + "%";
 
+// BARRA ÁGUA
 document.getElementById("barraAgua").style.width =
-Math.max(0,Math.min(100,agua)) + "%";
+Math.max(0, Math.min(100, agua)) + "%";
 
+// BARRA PRODUÇÃO (normalizada)
 document.getElementById("barraProd").style.width =
-Math.max(0,Math.min(100,(producao/100000)*100)) + "%";
+Math.max(0, Math.min(100, producao / 1000)) + "%";
 
 }
 

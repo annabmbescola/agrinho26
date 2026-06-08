@@ -101,7 +101,7 @@ button:hover{
 background:#1b5e20;
 }
   
-/* SIMULADOR. COMEÇA ESCONDIDO E SÓ APARECE QUANDO O USUÁRIO CLICAR EM INICIAR SIMULAÇÃO */
+/* SIMULADOR. COMEÇA ESCONDIDO E SÓ APARECE QUANDO O USUÁRIO CLICAR NO BOTÃO */
 #simArea{
 display:none;
 margin-top:30px;
@@ -216,7 +216,7 @@ Simulador de Sustentabilidade
 </div>
 </header>
 
-<!-- CADA  -->
+<!-- CADA LINK LEVA PRA UMA SEÇÃO DA PÁGINA -->
 <nav>
 <a href="#sustentabilidade">Sustentabilidade</a>
 <a href="#impactos">Impactos</a>
@@ -225,88 +225,68 @@ Simulador de Sustentabilidade
 <a href="#simulador">Simulador</a>
 </nav>
 
+<!-- TEXTOS QUE EXPLICAM CADA SEÇÃO -->
 <section id="sustentabilidade">
-
 <h2>🌍 Sustentabilidade</h2>
-
 <div class="card">
 Produzir alimentos não significa apenas gerar lucro.
 A sustentabilidade busca equilibrar economia,
 produção agrícola e preservação ambiental para
 garantir recursos para as próximas gerações.
 </div>
-
 </section>
 
 <section id="impactos">
-
 <h2>⚠️ Impactos Ambientais</h2>
-
 <div class="card">
 O uso inadequado dos recursos naturais pode causar
 erosão do solo, contaminação da água, perda de biodiversidade
 e redução da produtividade agrícola.
 </div>
-
 </section>
 
 <section id="agua">
-
 <h2>💧 Água</h2>
-
 <div class="card">
 A água é um dos recursos mais importantes para a agricultura.
 Boas práticas de manejo podem reduzir desperdícios e garantir
 a produção mesmo em períodos de seca.
 </div>
-
 </section>
 
 <section id="campoCidade">
-
 <h2>🚜 Campo e Cidade</h2>
-
 <div class="card">
 O campo fornece alimentos, energia e matérias-primas.
 A cidade fornece tecnologia, serviços e mercado consumidor.
 Os dois dependem um do outro.
 </div>
-
 </section>
 
 <section id="simulador">
-
 <h2>🎮 Simulador AGRINHO 2050</h2>
-
 <div class="card">
-
 <p>
 Você será responsável por uma fazenda entre 2025 e 2050.
 Cada decisão afetará:
 </p>
-
 <br>
-
 <ul>
 <li>💰 Dinheiro</li>
 <li>🌱 Sustentabilidade</li>
 <li>💧 Água</li>
 <li>🚜 Produção</li>
 </ul>
-
 <br>
-
 <p>
 Seu objetivo é chegar a 2050 com uma fazenda lucrativa,
 sustentável e preparada para os desafios climáticos.
 </p>
-
 <br>
-
+<!-- BOTÃO INICIAR. QUANDO CLICADO O SIMULADOR APARECE E O JOGO FICA VISÍVEL -->
 <button onclick="iniciarJogo()">
 INICIAR SIMULAÇÃO
 </button>
-
 </div>
 
 <div id="simArea">
@@ -333,13 +313,11 @@ Ano: 2025
 <div class="barra">
 <div class="progresso" id="barraSus"></div>
 </div>
-
 </div>
 
 <div class="indicador">
 
 <h3>💧 Água</h3>
-
 <div class="valor" id="agua">
 50
 </div>
@@ -347,13 +325,11 @@ Ano: 2025
 <div class="barra">
 <div class="progresso" id="barraAgua"></div>
 </div>
-
 </div>
 
 <div class="indicador">
 
 <h3>🚜 Produção</h3>
-
 <div class="valor" id="producao">
 50
 </div>
@@ -361,9 +337,7 @@ Ano: 2025
 <div class="barra">
 <div class="progresso" id="barraProd"></div>
 </div>
-
 </div>
-
 </div>
 
 <div id="evento">
@@ -381,15 +355,16 @@ Clique em iniciar para começar.
 </div>
 
 </section>
-
+  
+<!-- PÉ DA PÁGINA  -->
 <footer>
-
-AGRINHO 2050 © Projeto Educacional
-
+AGRINHO 2026 © Anna B. M.
 </footer>
 
+<!-- JAVASCRIPT  -->
 <script>
 
+  // Comentário de uma linha
 // ==========================
 // VARIÁVEIS DO JOGO
 // ==========================

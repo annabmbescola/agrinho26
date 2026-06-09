@@ -702,25 +702,25 @@ function encerrarSimulacao() {
     let mensagem_final = "";
 
     if (sustenta <= 30 && qtd_agua <= 30 && qtd_prod <= 40000) {
-        mensagem_final = "<h2 style='color: #2e7d32; border: none;'>🔥 Agro em Colapso</h2><p><strong>O fracasso da simulação.</strong> Sustentabilidade baixa, água baixa, produção baixa. O sistema não se sustentou ao longo do tempo.</p>";
+        mensagem_final = "<h2 style='color: #2e7d32; border: none;'>Agro em Colapso</h2><p><strong>O fracasso da simulação.</strong> Sustentabilidade baixa, água baixa, produção baixa. O sistema não se sustentou ao longo do tempo.</p>";
     } 
     else if (qtd_agua <= 35) {
-        mensagem_final = "<h2 style='color: #43a047; border: none;'>💧 Agro em Estresse Hídrico</h2><p><strong>O alerta.</strong> Água muito baixa e produção instável. A falta de gestão de recursos hídricos comprometeu tudo.</p>";
+        mensagem_final = "<h2 style='color: #43a047; border: none;'>Agro em Estresse Hídrico</h2><p><strong>O alerta.</strong> Água muito baixa e produção instável. A falta de gestão de recursos hídricos comprometeu tudo.</p>";
     } 
     else if (sustenta >= 80 && grana <= 5000000) {
-        mensagem_final = "<h2 style='color: #388e3c; border: none;'>🌱 Agro Conservador Ambiental</h2><p><strong>O protetor.</strong> Sustentabilidade muito alta, mas com baixa expansão econômica. Você protegeu o meio ambiente, mas cresceu pouco.</p>";
+        mensagem_final = "<h2 style='color: #388e3c; border: none;'>Agro Conservador Ambiental</h2><p><strong>O protetor.</strong> Sustentabilidade muito alta, mas com baixa expansão econômica. Você protegeu o meio ambiente, mas cresceu pouco.</p>";
     } 
     else if (grana >= 8000000 && sustenta < 50) {
-        mensagem_final = "<h2 style='color: #66bb6a; border: none;'>💰 Agro Expansivo</h2><p><strong>Crescimento acima de tudo.</strong> Você acumulou muito dinheiro, mas a sustentabilidade ficou baixa. Cresceu rápido, mas com um alto custo ambiental.</p>";
+        mensagem_final = "<h2 style='color: #66bb6a; border: none;'>Agro Expansivo</h2><p><strong>Crescimento acima de tudo.</strong> Você acumulou muito dinheiro, mas a sustentabilidade ficou baixa. Cresceu rápido, mas com um alto custo ambiental.</p>";
     } 
     else if (qtd_prod >= 60000 && qtd_agua >= 50 && sustenta >= 40 && sustenta < 70) {
-        mensagem_final = "<h2 style='color: #1b5e20; border: none;'>🚜 Agro Tecnológico</h2><p><strong>O inovador.</strong> Alta produção, boa reserva de água e sustentabilidade média/boa. Você usou a tecnologia para compensar os impactos ambientais.</p>";
+        mensagem_final = "<h2 style='color: #1b5e20; border: none;'>Agro Tecnológico</h2><p><strong>O inovador.</strong> Alta produção, boa reserva de água e sustentabilidade média/boa. Você usou a tecnologia para compensar os impactos ambientais.</p>";
     } 
     else if (sustenta >= 70 && qtd_agua >= 60 && qtd_prod >= 50000 && grana >= 5000000) {
-        mensagem_final = "<h2 style='color: #0a331a; border: none;'>🟢 Agro Sustentável de Referência</h2><p><strong>O ideal do jogo.</strong> Alta sustentabilidade, água preservada, boa produção e lucro saudável. Você construiu um modelo de agro equilibrado e duradouro!</p>";
+        mensagem_final = "<h2 style='color: #0a331a; border: none;'>Agro Sustentável de Referência</h2><p><strong>O ideal do jogo.</strong> Alta sustentabilidade, água preservada, boa produção e lucro saudável. Você construiu um modelo de agro equilibrado e duradouro!</p>";
     } 
     else {
-        mensagem_final = "<h2 style='color: #4caf50; border: none;'>⚖️ Agro Equilibrado</h2><p><strong>O seguro.</strong> Tudo em níveis médios. Você não arriscou demais, mas também não se destacou.</p>";
+        mensagem_final = "<h2 style='color: #4caf50; border: none;'>Agro Equilibrado</h2><p><strong>O seguro.</strong> Tudo em níveis médios. Você não arriscou demais, mas também não se destacou.</p>";
     }
 
     // Escondo a área de perguntas e mostro a tela final de resultados.
@@ -737,7 +737,7 @@ function encerrarSimulacao() {
         "<p style='margin:10px 0; font-size: 1.2rem; color: #1b5e20;'><b>🌱 Sustentabilidade:</b> " + sustenta + "%</p>" +
         "<p style='margin:10px 0; font-size: 1.2rem; color: #1b5e20;'><b>💧 Nível de Água:</b> " + qtd_agua + "%</p>" +
         "<p style='margin:10px 0; font-size: 1.2rem; color: #1b5e20;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
-        "<h3 style='margin-top:20px; color:#0a331a; text-align: center; border: none;'>🌎 Missão Concluída: Ano 2050</h3>";
+        "<h3 style='margin-top:20px; color:#0a331a; text-align: center; border: none;'>Missão Concluída: Ano 2050</h3>";
 }
 </script>
 </body>

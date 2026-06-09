@@ -24,18 +24,19 @@ h1, h2, h3, .badge {
 }
 
 body {
-    /* Fundo off-white com um toque quase imperceptível de verde */
-    background: #f4faf6;
-    color: #333; 
+    /* Fundo off-white super elegante */
+    background: #f7fbf7;
+    /* Texto em um verde escuro quase grafite para leitura confortável */
+    color: #1a3320; 
     line-height: 1.6; 
 }
 
-/* Topo do site com Gradiente focado no Verde com toques de Azul */
+/* Topo do site com Gradiente 100% Verde */
 header {
-    background: linear-gradient(135deg, #074a2b, #00695c, #026597, #1b8a47);
+    background: linear-gradient(135deg, #0a331a, #1b5e20, #2e7d32, #144d29);
     background-size: 200% 200%;
     animation: gradientMove 10s ease infinite; /* Animação suave no fundo */
-    color: white;
+    color: #f7fbf7;
     padding: 80px 20px;
     text-align: center;
     border-bottom: 5px solid #a5d6a7;
@@ -63,7 +64,7 @@ header p {
 
 /* Menu de navegação */
 nav {
-    background: #034027; /* Tom escuro e elegante de verde floresta */
+    background: #0d3b1f; /* Verde floresta escuro */
     padding: 15px;
     position: sticky; 
     top: 0;
@@ -73,7 +74,7 @@ nav {
 }
 
 nav a {
-    color: #e8f5e9;
+    color: #e8f5e9; /* Off-white esverdeado */
     text-decoration: none; 
     margin: 0 15px;
     font-weight: bold;
@@ -84,8 +85,8 @@ nav a {
 }
 
 nav a:hover {
-    color: #1de9b6; /* Fica um verde água/ciano brilhante ao passar o mouse */
-    text-shadow: 0 0 8px rgba(29, 233, 182, 0.5);
+    color: #b9f6ca; /* Verde claro brilhante ao passar o mouse */
+    text-shadow: 0 0 8px rgba(185, 246, 202, 0.4);
 }
 
 /* Espaçamento geral das seções */
@@ -94,25 +95,23 @@ section {
 }
 
 h2 {
-    /* Letra em tom de verde bem escuro/azulado com traço verde limão embaixo */
-    color: #004d40;
+    color: #1b5e20;
     font-size: 2.2rem;
     margin-bottom: 20px;
-    border-bottom: 4px solid #43a047; 
+    border-bottom: 4px solid #4caf50; 
     display: inline-block;
     padding-bottom: 5px;
 }
 
 /* Caixas de texto (Cards) */
 .card {
-    background: white;
+    background: #ffffff;
     padding: 30px;
     border-radius: 15px;
     margin-top: 20px;
-    /* Sombra esverdeada bem chique */
-    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.08); 
+    box-shadow: 0 8px 20px rgba(27, 94, 32, 0.08); 
     font-size: 1.1rem;
-    border-top: 3px solid #81c784; /* Detalhe fininho no topo verde claro */
+    border-top: 3px solid #81c784; 
 }
 
 .card p {
@@ -125,31 +124,31 @@ button {
     padding: 18px;
     border: none;
     border-radius: 10px;
-    /* Gradiente vibrante verde e azul turquesa */
-    background: linear-gradient(45deg, #00897b, #2e7d32);
-    color: white;
+    /* Gradiente verde vibrante */
+    background: linear-gradient(45deg, #388e3c, #1b5e20);
+    color: #ffffff;
     font-size: 1.2rem;
     font-weight: bold;
     font-family: 'Roboto Slab', serif;
     cursor: pointer; 
     transition: 0.4s; 
-    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+    box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
 }
 
 button:hover {
-    background: linear-gradient(45deg, #00695c, #1b5e20); 
+    background: linear-gradient(45deg, #2e7d32, #0a331a); 
     transform: translateY(-3px); 
-    box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+    box-shadow: 0 6px 15px rgba(27, 94, 32, 0.4);
 }
 
 /* Caixa principal do jogo */
 #caixa_jogo {
     display: none;
     margin-top: 30px;
-    background: white;
+    background: #ffffff;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.1);
+    box-shadow: 0 8px 25px rgba(27, 94, 32, 0.1);
 }
 
 /* Status do jogo */
@@ -161,69 +160,68 @@ button:hover {
 }
 
 .indicador {
-    background: linear-gradient(135deg, #f1fdf5, #e8f5e9);
+    background: linear-gradient(135deg, #ffffff, #f1fdf5);
     padding: 20px;
     border-radius: 12px;
     text-align: center;
-    border: 1px solid #a5d6a7;
+    border: 1px solid #c8e6c9;
     box-shadow: inset 0 2px 5px rgba(255,255,255,0.8);
 }
 
 .indicador h3 {
     font-size: 1.1rem;
     margin-bottom: 10px;
-    color: #00695c;
+    color: #2e7d32;
 }
 
 .valor {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #2e7d32;
+    color: #1b5e20;
 }
 
 .barra {
     height: 12px;
-    background: #cfd8dc;
+    background: #e8f5e9;
     border-radius: 20px;
     overflow: hidden; 
     margin-top: 15px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .progresso {
     height: 100%;
     width: 50%; 
-    /* A cor agora será controlada automaticamente pelo JavaScript! */
     transition: width 0.5s ease, background 0.5s ease; 
 }
 
 #txt_ano {
     font-size: 1.6rem;
     font-weight: bold;
-    color: #004d40;
+    color: #1b5e20;
     margin-bottom: 20px;
     font-family: 'Roboto Slab', serif;
 }
 
 /* Eventos e Perguntas */
 #alerta_evento {
-    background: #e8f5e9; 
+    background: #f1fdf5; 
     padding: 15px;
     border-radius: 10px;
-    border-left: 5px solid #388e3c; 
+    border-left: 5px solid #4caf50; 
     margin-bottom: 25px;
     font-weight: bold;
-    color: #1b5e20;
+    color: #2e7d32;
 }
 
 #texto_pergunta {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    color: #222;
+    color: #1a3320;
 }
 
 .opcao {
-    background: linear-gradient(135deg, #43a047, #00838f);
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
     color: white;
     padding: 18px;
     border-radius: 10px;
@@ -237,34 +235,36 @@ button:hover {
 
 .opcao:hover {
     transform: scale(1.02); 
-    background: linear-gradient(135deg, #2e7d32, #006064);
-    box-shadow: 0 5px 12px rgba(46, 125, 50, 0.2);
+    background: linear-gradient(135deg, #43a047, #1b5e20);
+    box-shadow: 0 5px 12px rgba(27, 94, 32, 0.2);
 }
 
 /* Fim de jogo e Falência */
 #fim_jogo {
     display: none;
     margin-top: 30px;
-    background: #e8f5e9;
+    background: #f1fdf5;
     padding: 30px;
     border-radius: 15px;
-    border: 2px solid #388e3c;
+    border: 2px solid #66bb6a;
 }
 
 #tela_falencia {
     display: none; 
     margin-top: 30px; 
-    background: #ffebee; 
+    /* Fundo verde super escuro para indicar "game over" sem usar vermelho */
+    background: #0a1f11; 
+    color: #e8f5e9;
     padding: 30px; 
     border-radius: 15px; 
-    border: 2px solid #c62828;
+    border: 2px solid #1b5e20;
     text-align: center;
 }
 
 /* Rodapé */
 footer {
-    background: #0a331a;
-    color: #a5d6a7;
+    background: #0d3b1f;
+    color: #c8e6c9;
     text-align: center;
     padding: 30px;
     margin-top: 50px;
@@ -275,14 +275,14 @@ footer {
 .badge {
     display: inline-block;
     padding: 8px 18px;
-    background: #009688; /* Verde turquesa vibrante */
+    background: #2e7d32; 
     color: #fff;
     border-radius: 30px;
     margin-top: 15px;
     font-size: 0.9rem;
     text-transform: uppercase;
     font-weight: bold;
-    box-shadow: 0 2px 6px rgba(0, 150, 136, 0.4);
+    box-shadow: 0 2px 6px rgba(46, 125, 50, 0.4);
 }
 </style>
 </head>
@@ -377,10 +377,10 @@ footer {
         <div id="fim_jogo"></div>
         
         <div id="tela_falencia">
-            <h2 style="color: #c62828; border-bottom: none; margin-bottom: 10px;">🚨 FALÊNCIA TOTAL!</h2>
-            <p style="margin: 15px 0; color: #222;">O saldo da sua fazenda ficou negativo. Sem capital para operar, pagar funcionários ou comprar insumos, suas atividades foram encerradas antes de 2050.</p>
+            <h2 style="color: #a5d6a7; border-bottom: none; margin-bottom: 10px;">🚨 FALÊNCIA TOTAL!</h2>
+            <p style="margin: 15px 0; color: #e8f5e9;">O saldo da sua fazenda ficou negativo. Sem capital para operar, pagar funcionários ou comprar insumos, suas atividades foram encerradas antes de 2050.</p>
             <br>
-            <button onclick="window.location.reload()" style="background: #c62828; color: white; box-shadow: none;">TENTAR NOVAMENTE</button>
+            <button onclick="window.location.reload()" style="background: #2e7d32; color: white; box-shadow: none;">TENTAR NOVAMENTE</button>
         </div>
     </div>
 </section>
@@ -527,14 +527,17 @@ function comecarJogo() {
     mostrarProximaPergunta();    
 }
 
-// Função nova que define a cor dependendo da porcentagem
+// Alterado para usar apenas tons de verde!
 function atualizarCorBarra(elemento, valor) {
     if (valor >= 60) {
-        elemento.style.background = "linear-gradient(90deg, #2e7d32, #64dd17)";
+        // Verde vibrante e saudável
+        elemento.style.background = "linear-gradient(90deg, #388e3c, #66bb6a)";
     } else if (valor >= 30) {
-        elemento.style.background = "linear-gradient(90deg, #f57c00, #fbc02d)";
+        // Verde amarelado/oliva (Atenção)
+        elemento.style.background = "linear-gradient(90deg, #7cb342, #9ccc65)";
     } else {
-        elemento.style.background = "linear-gradient(90deg, #c62828, #ff5252)";
+        // Verde musgo escuro/seco (Perigo)
+        elemento.style.background = "linear-gradient(90deg, #33691e, #558b2f)";
     }
 }
 
@@ -624,21 +627,17 @@ function mostrarProximaPergunta() {
 
     let dados_pergunta = perguntas_jogo[num_fase];
     
-    // CORREÇÃO: Usando a chave "texto" conforme definido no array
     document.getElementById("texto_pergunta").innerText = dados_pergunta.texto; 
 
     let div_opcoes = document.getElementById("caixa_opcoes");
     div_opcoes.innerHTML = "";
 
-    // CORREÇÃO: Usando a chave "op" conforme definido no array
     dados_pergunta.op.forEach(item => {
         let botao = document.createElement("div"); 
         botao.classList.add("opcao");             
-        // CORREÇÃO: Usando a chave "text" conforme definido no array
         botao.innerText = item.text;                
 
         botao.onclick = function() {
-            // CORREÇÃO: Usando a chave "d" para dinheiro conforme definido no array
             grana += item.d; 
             sustenta += item.s;
             qtd_agua += item.a;
@@ -666,33 +665,26 @@ function mostrarProximaPergunta() {
 function encerrarSimulacao() {
     let mensagem_final = "";
 
-    // 7. Agro em Colapso
     if (sustenta <= 30 && qtd_agua <= 30 && qtd_prod <= 40000) {
-        mensagem_final = "<h2 style='color: #c62828; border: none;'>🔥 Agro em Colapso</h2><p><strong>O fracasso da simulação.</strong> Sustentabilidade baixa, água baixa, produção baixa. O sistema não se sustentou ao longo do tempo.</p>";
+        mensagem_final = "<h2 style='color: #2e7d32; border: none;'>🔥 Agro em Colapso</h2><p><strong>O fracasso da simulação.</strong> Sustentabilidade baixa, água baixa, produção baixa. O sistema não se sustentou ao longo do tempo.</p>";
     } 
-    // 6. Agro em Estresse Hídrico
     else if (qtd_agua <= 35) {
-        mensagem_final = "<h2 style='color: #e65100; border: none;'>💧 Agro em Estresse Hídrico</h2><p><strong>O alerta.</strong> Água muito baixa e produção instável. A falta de gestão de recursos hídricos comprometeu tudo.</p>";
+        mensagem_final = "<h2 style='color: #43a047; border: none;'>💧 Agro em Estresse Hídrico</h2><p><strong>O alerta.</strong> Água muito baixa e produção instável. A falta de gestão de recursos hídricos comprometeu tudo.</p>";
     } 
-    // 5. Agro Conservador Ambiental
     else if (sustenta >= 80 && grana <= 5000000) {
         mensagem_final = "<h2 style='color: #388e3c; border: none;'>🌱 Agro Conservador Ambiental</h2><p><strong>O protetor.</strong> Sustentabilidade muito alta, mas com baixa expansão econômica. Você protegeu o meio ambiente, mas cresceu pouco.</p>";
     } 
-    // 3. Agro Expansivo (Foco no Lucro)
     else if (grana >= 8000000 && sustenta < 50) {
-        mensagem_final = "<h2 style='color: #fbc02d; border: none;'>💰 Agro Expansivo</h2><p><strong>Crescimento acima de tudo.</strong> Você acumulou muito dinheiro, mas a sustentabilidade ficou baixa. Cresceu rápido, mas com um alto custo ambiental.</p>";
+        mensagem_final = "<h2 style='color: #66bb6a; border: none;'>💰 Agro Expansivo</h2><p><strong>Crescimento acima de tudo.</strong> Você acumulou muito dinheiro, mas a sustentabilidade ficou baixa. Cresceu rápido, mas com um alto custo ambiental.</p>";
     } 
-    // 4. Agro Tecnológico
     else if (qtd_prod >= 60000 && qtd_agua >= 50 && sustenta >= 40 && sustenta < 70) {
-        mensagem_final = "<h2 style='color: #0288d1; border: none;'>🚜 Agro Tecnológico</h2><p><strong>O inovador.</strong> Alta produção, boa reserva de água e sustentabilidade média/boa. Você usou a tecnologia para compensar os impactos ambientais.</p>";
+        mensagem_final = "<h2 style='color: #1b5e20; border: none;'>🚜 Agro Tecnológico</h2><p><strong>O inovador.</strong> Alta produção, boa reserva de água e sustentabilidade média/boa. Você usou a tecnologia para compensar os impactos ambientais.</p>";
     } 
-    // 1. Agro Sustentável de Referência
     else if (sustenta >= 70 && qtd_agua >= 60 && qtd_prod >= 50000 && grana >= 5000000) {
-        mensagem_final = "<h2 style='color: #00897b; border: none;'>🟢 Agro Sustentável de Referência</h2><p><strong>O ideal do jogo.</strong> Alta sustentabilidade, água preservada, boa produção e lucro saudável. Você construiu um modelo de agro equilibrado e duradouro!</p>";
+        mensagem_final = "<h2 style='color: #0a331a; border: none;'>🟢 Agro Sustentável de Referência</h2><p><strong>O ideal do jogo.</strong> Alta sustentabilidade, água preservada, boa produção e lucro saudável. Você construiu um modelo de agro equilibrado e duradouro!</p>";
     } 
-    // 2. Agro Equilibrado (O "seguro", caso não se encaixe nos extremos)
     else {
-        mensagem_final = "<h2 style='color: #8d6e63; border: none;'>⚖️ Agro Equilibrado</h2><p><strong>O seguro.</strong> Tudo em níveis médios. Você não arriscou demais, mas também não se destacou.</p>";
+        mensagem_final = "<h2 style='color: #4caf50; border: none;'>⚖️ Agro Equilibrado</h2><p><strong>O seguro.</strong> Tudo em níveis médios. Você não arriscou demais, mas também não se destacou.</p>";
     }
 
     document.getElementById("texto_pergunta").style.display = "none";
@@ -702,12 +694,12 @@ function encerrarSimulacao() {
     let fim = document.getElementById("fim_jogo");
     fim.style.display = "block";
     
-    fim.innerHTML = mensagem_final + "<hr style='margin:20px 0; border:0; border-top:2px solid #a5d6a7;'>" +
-        "<p style='margin:10px 0; font-size: 1.2rem;'><b>💰 Saldo Final:</b> " + grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</p>" +
-        "<p style='margin:10px 0; font-size: 1.2rem;'><b>🌱 Sustentabilidade:</b> " + sustenta + "%</p>" +
-        "<p style='margin:10px 0; font-size: 1.2rem;'><b>💧 Nível de Água:</b> " + qtd_agua + "%</p>" +
-        "<p style='margin:10px 0; font-size: 1.2rem;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
-        "<h3 style='margin-top:20px; color:#004d40; text-align: center; border: none;'>🌎 Missão Concluída: Ano 2050</h3>";
+    fim.innerHTML = mensagem_final + "<hr style='margin:20px 0; border:0; border-top:2px solid #81c784;'>" +
+        "<p style='margin:10px 0; font-size: 1.2rem; color: #1b5e20;'><b>💰 Saldo Final:</b> " + grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem; color: #1b5e20;'><b>🌱 Sustentabilidade:</b> " + sustenta + "%</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem; color: #1b5e20;'><b>💧 Nível de Água:</b> " + qtd_agua + "%</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem; color: #1b5e20;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
+        "<h3 style='margin-top:20px; color:#0a331a; text-align: center; border: none;'>🌎 Missão Concluída: Ano 2050</h3>";
 }
 </script>
 </body>

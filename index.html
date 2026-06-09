@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador Agrônomo: Qual será o seu perfil no agro?</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+/* Reset básico de página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fonte especial para os títulos */
+h1, h2, h3, .badge {
+    font-family: 'Roboto Slab', serif;
+}
+
+body {
+    /* Fundo off-white com um toque quase imperceptível de verde */
+    background: #f4faf6;
+    color: #333; 
+    line-height: 1.6; 
+}
+
+/* Topo do site com Gradiente focado no Verde com toques de Azul */
+header {
+    background: linear-gradient(135deg, #074a2b, #00695c, #026597, #1b8a47);
+    background-size: 200% 200%;
+    animation: gradientMove 10s ease infinite; /* Animação suave no fundo */
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 5px solid #a5d6a7;
+}
+
+/* Criando o movimento do gradiente no Topo */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header h1 {
+    font-size: 3.2rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 3px 6px rgba(0,0,0,0.4); 
+}
+
+header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: auto; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Menu de navegação */
+nav {
+    background: #034027; /* Tom escuro e elegante de verde floresta */
+    padding: 15px;
+    position: sticky; 
+    top: 0;
+    z-index: 999; 
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+nav a {
+    color: #e8f5e9;
+    text-decoration: none; 
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #1de9b6; /* Fica um verde água/ciano brilhante ao passar o mouse */
+    text-shadow: 0 0 8px rgba(29, 233, 182, 0.5);
+}
+
+/* Espaçamento geral das seções */
+section {
+    padding: 60px 10%;
+}
+
+h2 {
+    /* Letra em tom de verde bem escuro/azulado com traço verde limão embaixo */
+    color: #004d40;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #43a047; 
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Caixas de texto (Cards) */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    /* Sombra esverdeada bem chique */
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.08); 
+    font-size: 1.1rem;
+    border-top: 3px solid #81c784; /* Detalhe fininho no topo verde claro */
+}
+
+.card p {
+    margin-bottom: 15px; 
+}
+
+/* Botão de iniciar a simulação */
+button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    /* Gradiente vibrante verde e azul turquesa */
+    background: linear-gradient(45deg, #00897b, #2e7d32);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
+    cursor: pointer; 
+    transition: 0.4s; 
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(45deg, #00695c, #1b5e20); 
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+}
+
+/* Caixa principal do jogo */
+#caixa_jogo {
+    display: none;
+    margin-top: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.1);
+}
+
+/* Status do jogo */
+.status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.indicador {
+    background: linear-gradient(135deg, #f1fdf5, #e8f5e9);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #a5d6a7;
+    box-shadow: inset 0 2px 5px rgba(255,255,255,0.8);
+}
+
+.indicador h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #00695c;
+}
+
+.valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.barra {
+    height: 12px;
+    background: #cfd8dc;
+    border-radius: 20px;
+    overflow: hidden; 
+    margin-top: 15px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progresso {
+    height: 100%;
+    width: 50%; 
+    /* A barra de progresso agora é um degradê de turquesa para verde vivo! */
+    background: linear-gradient(90deg, #00897b, #64dd17);
+    transition: 0.5s; 
+}
+
+#txt_ano {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #004d40;
+    margin-bottom: 20px;
+    font-family: 'Roboto Slab', serif;
+}
+
+/* Eventos e Perguntas */
+#alerta_evento {
+    background: #e8f5e9; 
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #388e3c; 
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #1b5e20;
+}
+
+#texto_pergunta {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.opcao {
+    background: linear-gradient(135deg, #43a047, #00838f);
+    color: white;
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.opcao:hover {
+    transform: scale(1.02); 
+    background: linear-gradient(135deg, #2e7d32, #006064);
+    box-shadow: 0 5px 12px rgba(46, 125, 50, 0.2);
+}
+
+/* Fim de jogo e Falência */
+#fim_jogo {
+    display: none;
+    margin-top: 30px;
+    background: #e8f5e9;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #388e3c;
+}
+
+#tela_falencia {
+    display: none; 
+    margin-top: 30px; 
+    background: #ffebee; 
+    padding: 30px; 
+    border-radius: 15px; 
+    border: 2px solid #c62828;
+    text-align: center;
+}
+
+/* Rodapé */
+footer {
+    background: #0a331a;
+    color: #a5d6a7;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 1px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #009688; /* Verde turquesa vibrante */
+    color: #fff;
+    border-radius: 30px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 150, 136, 0.4);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>O Agro é o Futuro que Vai Sustentar o Mundo?</h1>
+    <p>As decisões que tomamos hoje são as sementes do amanhã. O campo e a cidade giram na mesma engrenagem: o que afeta um, transforma o outro.</p>
+    <div class="badge">Simulador de Impacto Agro-Urbano</div>
+</header>
+
+<nav>
+    <a href="#sustentabilidade">Sustentabilidade</a>
+    <a href="#impactos">Impactos</a>
+    <a href="#agua">Água</a>
+    <a href="#campoCidade">Campo e Cidade</a>
+    <a href="#simulador">Simulador</a>
+</nav>
+
+<section id="sustentabilidade">
+    <h2>Sustentabilidade: O Preço das Escolhas</h2>
+    <div class="card">
+        <p>Imagine produzir cada vez mais, ganhar mais dinheiro e expandir seus negócios. Parece o caminho perfeito. Mas e se, para chegar lá, a água começar a faltar, o solo perder sua fertilidade e os recursos naturais deixarem de existir? De que adianta crescer hoje se isso impedir o amanhã?</p>
+        <p>A sustentabilidade existe porque toda escolha tem um custo e uma consequência. Ela mostra que o verdadeiro progresso não é extrair tudo o que podemos da natureza, mas usar os recursos com inteligência para que continuem existindo no futuro. Afinal, o maior desafio não é conquistar resultados rápidos, e sim garantir que eles possam durar por gerações.</p>
+    </div>
+</section>
+
+<section id="impactos">
+    <h2>Impactos Ambientais: Como isso me Afeta?</h2>
+    <div class="card">
+        <p>A natureza não envia boletos, mas cobra cada decisão. O desmatamento excessivo, a poluição da água e o uso inadequado do solo podem gerar consequências que afetam toda a sociedade. Quando os recursos naturais são degradados, a produção diminui, os custos aumentam e o equilíbrio ambiental é perdido. Proteger o meio ambiente não é apenas uma questão ecológica — é uma necessidade para garantir qualidade de vida e um futuro sustentável.</p>
+    </div>
+</section>
+
+<section id="agua">
+    <h2>Água: A maior fonte de vida</h2>
+    <div class="card">
+        <p>Toda forma de vida depende da água — e a agricultura não é diferente. Quando ela é desperdiçada, o problema não aparece apenas na conta ou na lavoura, mas também no futuro da produção. Utilizar a água de forma inteligente significa estar preparado para períodos de seca, proteger os recursos naturais e garantir que esse bem essencial continue disponível para todos. Afinal, sem água não existe colheita, desenvolvimento ou vida.</p>
+    </div>
+</section>
+
+<section id="campoCidade">
+    <h2>Campo e Cidade: Uma Só Engrenagem</h2>
+    <div class="card">
+        <p>O campo e a cidade podem parecer mundos diferentes, mas um não existe sem o outro. Enquanto o campo produz os alimentos que chegam à mesa, a cidade oferece tecnologia, serviços e inovação para tornar essa produção mais eficiente. Tudo o que consumimos, usamos ou produzimos passa, de alguma forma, por essa conexão. Quando um lado cresce, o outro também se fortalece, mostrando que desenvolvimento e qualidade de vida dependem dessa parceria constante.</p>
+    </div>
+</section>
+
+<section id="simulador">
+    <h2>Simulador Agrônomo: Chegue até 2050</h2>
+    <div class="card">
+        <p>Você tem o controle de uma fazenda e apenas uma missão: chegar ao ano de 2050. Parece simples, mas cada decisão terá consequências. Investir ou economizar? Expandir ou preservar? Pensar no lucro imediato ou no futuro da propriedade?</p>
+        <p>Suas escolhas irão definir o destino da fazenda, dos recursos naturais e dos seus resultados financeiros. Será que você consegue encontrar o equilíbrio entre crescimento e sustentabilidade?</p>
+        <p><b>O futuro da sua fazenda começa agora.</b></p>
+        <br>
+        <button onclick="comecarJogo()">INICIAR SIMULAÇÃO</button>
+    </div>
+
+    <div id="caixa_jogo">
+        <div id="txt_ano">Ano: 2025</div>
+
+        <div class="status">
+            <div class="indicador">
+                <h3>💰 Dinheiro</h3>
+                <div class="valor" id="txt_grana">0</div>
+            </div>
+
+            <div class="indicador">
+                <h3>🌱 Sustentabilidade</h3>
+                <div class="valor" id="txt_sustenta">50%</div>
+                <div class="barra"><div class="progresso" id="barra_sus"></div></div>
+            </div>
+
+            <div class="indicador">
+                <h3>💧 Água</h3>
+                <div class="valor" id="txt_agua">50%</div>
+                <div class="barra"><div class="progresso" id="barra_agua"></div></div>
+            </div>
+
+            <div class="indicador">
+                <h3>🚜 Produção</h3>
+                <div class="valor" id="txt_prod">50000</div>
+                <div class="barra"><div class="progresso" id="barra_prod"></div></div>
+            </div>
+        </div>
+
+        <div id="alerta_evento"></div>
+        <h3 id="texto_pergunta"></h3>
+        
+        <div id="caixa_opcoes"></div> 
+        <div id="fim_jogo"></div>
+        
+        <div id="tela_falencia">
+            <h2 style="color: #c62828; border-bottom: none; margin-bottom: 10px;">🚨 FALÊNCIA TOTAL!</h2>
+            <p style="margin: 15px 0; color: #222;">O saldo da sua fazenda ficou negativo. Sem capital para operar, pagar funcionários ou comprar insumos, suas atividades foram encerradas antes de 2050.</p>
+            <br>
+            <button onclick="window.location.reload()" style="background: #c62828; color: white; box-shadow: none;">TENTAR NOVAMENTE</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    AGRINHO 2026 © Anna B. M.
+</footer>
+
+<script>
+// --- VARIÁVEIS GLOBAIS (Guardam o status atual do jogo) ---
+let grana = 5000000;     
+let sustenta = 50;       
+let qtd_agua = 50;       
+let qtd_prod = 50000;    
+let num_fase = 0;        
+
+const lista_anos = [2025, 2027, 2029, 2031, 2033, 2035, 2037, 2039, 2041, 2043, 2045, 2047, 2048, 2049, 2050];
+
+const perguntas_jogo = [
+    {
+        titulo: "Você recebeu R$1.000.000 de crédito rural. Como você quer investir?",
+        opcoes: [
+            { txt: "Comprar mais terras e expandir a plantação", g: -1000000, s: 10, a: -20, p: 10000 },
+            { txt: "Investir na agricultura de precisão", g: -500000, s: 10, a: 10, p: 3000 }
+        ]
+    },
+    {
+        titulo: "Um período de seca se aproxima. O que fazer?",
+        opcoes: [
+            { txt: "Construir um reservatório para armazenar e proteger a plantação", g: -50000, s: 15, a: 20, p: 5000 },
+            { txt: "Esperar pelas chuvas", g: 0, s: -10, a: 0, p: -2000 }
+        ]
+    },
+    {
+        titulo: "Um incêndio começou próximo da plantação.",
+        opcoes: [
+            { txt: "Pagar R$10.000 para contê-lo", g: -10000, s: 15, a: -10, p: -500 },
+            { txt: "Deixar queimar", g: 0, s: -50, a: -10, p: -2000 }
+        ]
+    },
+    {
+        titulo: "Há uma área de floresta em sua propriedade que está lhe ocupando espaço.",
+        opcoes: [
+            { txt: "Remover somente o necessário para a nova construção", g: -1000000, s: 5, a: 5, p: 0 },
+            { txt: "Desmatar ela toda para ter mais espaço para algo inovador", g: -2000000, s: -50, a: -5, p: 10000 }
+        ]
+    },
+    {
+        titulo: "Uma empresa te oferece energia solar em troca de uma parcela do seu terreno.",
+        opcoes: [
+            { txt: "Aceitar e instalar painéis", g: -10000, s: 35, a: 0, p: -2000 },
+            { txt: "Recusar a proposta", g: 0, s: -20, a: 0, p: 0 }
+        ]
+    },
+    {
+        titulo: "Uma infestação de pragas atacou a lavoura.",
+        opcoes: [
+            { txt: "Contratar o controle biológico", g: -1000000, s: 25, a: 5, p: 4000 },
+            { txt: "Uso excessivo de químicos para acabar com as pragas", g: -100000, s: -25, a: -15, p: -1000 }
+        ]
+    },
+    {
+        titulo: "Uma rede de supermercados quer comprar e vender seus produtos, desde que sejam certificados.",
+        opcoes: [
+            { txt: "Adequar a fazenda às exigências do comprador", g: 10000000, s: 20, a: -60, p: -20000 },
+            { txt: "Recusar a oferta", g: 0, s: -10, a: 0, p: 0 }
+        ]
+    },
+    {
+        titulo: "Uma nascente foi encontrada na sua propriedade.",
+        opcoes: [
+            { txt: "Proteger a nascente somente em prol da sustentabilidade", g: -1000000, s: 70, a: 80, p: 3000 },
+            { txt: "Vender esse terreno para o governo construir novas estradas", g: 5000000, s: -80, a: -95, p: -5000 }
+        ]
+    },
+    {
+        titulo: "Você possui crédito de carbono disponível.",
+        opcoes: [
+            { txt: "Resgatar mas perder R$10.000.000 na bolsa de valores (taxas)", g: -10000000, s: 30, a: 20, p: 0 },
+            { txt: "Ignorar", g: 0, s: -20, a: 0, p: 0 }
+        ]
+    },
+    {
+        titulo: "Tecnologia de monitoramento por drones é a última tendência. Deseja adquirir?",
+        opcoes: [
+            { txt: "Investir", g: -2000000, s: 15, a: 10, p: 8000 },
+            { txt: "Não investir", g: 0, s: -20, a: -30, p: 0 }
+        ]
+    },
+    {
+        titulo: "Uma onda de chuva extrema atingiu a região.",
+        opcoes: [
+            { txt: "Investir em drenagem", g: -3000000, s: 10, a: 15, p: 10000 },
+            { txt: "Não fazer nada", g: 0, s: -35, a: -10, p: -10000 }
+        ]
+    },
+    {
+        titulo: "Uma universidade oferece parceria tecnológica.",
+        opcoes: [
+            { txt: "Aceitar", g: -50000, s: 20, a: 10, p: 20000 },
+            { txt: "Recusar", g: 0, s: 0, a: 0, p: 0 }
+        ]
+    },
+    {
+        titulo: "Pesquisas apontam que o plantio direto reduz a erosão.",
+        opcoes: [
+            { txt: "Implementar", g: -1500000, s: 25, a: 10, p: 10000 },
+            { txt: "Continuar sistema antigo", g: 1000000, s: -15, a: -10, p: 0 }
+        ]
+    },
+    {
+        titulo: "Você recebe uma proposta de exportação para outro país.",
+        opcoes: [
+            { txt: "Cumprir exigências ambientais e aceitar", g: 50000000, s: 40, a: 25, p: -30000 },
+            { txt: "Não exportar", g: 10, s: 0, a: 0, p: 0 }
+        ]
+    },
+    {
+        titulo: "O ano de 2050 chegou. Uma auditoria deve avaliar sua fazenda.",
+        opcoes: [
+            { txt: "Receber avaliação", g: 0, s: 0, a: 0, p: 0 }
+        ]
+    }
+];
+
+function comecarJogo() {
+    document.getElementById("caixa_jogo").style.display = "block";
+    recarregarPainel();          
+    mostrarProximaPergunta();    
+}
+
+function recarregarPainel() {
+    document.getElementById("txt_grana").innerText = grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    document.getElementById("txt_agua").textContent = qtd_agua + "%";
+    document.getElementById("txt_sustenta").textContent = sustenta + "%";
+    document.getElementById("txt_prod").innerText = qtd_prod.toLocaleString("pt-BR");
+
+    document.getElementById("barra_sus").style.width = sustenta + "%";
+    document.getElementById("barra_agua").style.width = qtd_agua + "%";
+    
+    let limite_prod = qtd_prod / 1000;
+    if(limite_prod > 100) limite_prod = 100; 
+    if(limite_prod < 0) limite_prod = 0;      
+    document.getElementById("barra_prod").style.width = limite_prod + "%";
+}
+
+function rolarEventoAleatorio() {
+    let dado = Math.floor(Math.random() * 5); 
+    let msg = "";
+
+    if (dado === 0) {
+        msg = "🌧️ Chuvas na medida certa favoreceram a produção!";
+        qtd_prod += 10;
+        grana += 100000;
+    } else if (dado === 1) {
+        msg = "☀️ Clima estável favoreceu a lavoura nesta rodada.";
+        qtd_prod += 5000;
+        grana += 50000;
+    } else if (dado === 2) {
+        msg = "📈 O mercado está ótimo! Alta no preço dos grãos.";
+        grana += 150000;
+    } else if (dado === 3) {
+        msg = "🐝 Polinizadores aumentaram a biodiversidade e a produtividade.";
+        sustenta += 10;
+    } else if (dado === 4) {
+        msg = "⚠️ Fiscalização ambiental na região!";
+        if (sustenta < 40) {
+            msg += " Você foi multado por falta de práticas ecológicas!";
+            grana -= 500000;
+        } else {
+            msg += " Tudo certo por aqui, parabéns pela gestão!";
+        }
+    }
+
+    if (sustenta > 100) sustenta = 100;
+    if (sustenta < 0) sustenta = 0;
+    if (qtd_agua > 100) qtd_agua = 100;
+    if (qtd_agua < 0) qtd_agua = 0;
+
+    document.getElementById("alerta_evento").innerHTML = msg;
+    recarregarPainel(); 
+}
+
+function checarFalencia() {
+    if (grana < 0) {
+        document.getElementById("texto_pergunta").style.display = "none";
+        document.getElementById("caixa_opcoes").style.display = "none";
+        document.getElementById("alerta_evento").style.display = "none";
+        
+        document.getElementById("tela_falencia").style.display = "block";
+        return true; 
+    }
+    return false; 
+}
+
+function mostrarProximaPergunta() {
+    if (num_fase >= perguntas_jogo.length) {
+        encerrarSimulacao();
+        return;
+    }
+
+    document.getElementById("txt_ano").innerText = "📅 Ano: " + lista_anos[num_fase];
+    
+    rolarEventoAleatorio(); 
+
+    if (checarFalencia()) return;
+
+    let dados_pergunta = perguntas_jogo[num_fase];
+    document.getElementById("texto_pergunta").innerText = dados_pergunta.titulo;
+
+    let div_opcoes = document.getElementById("caixa_opcoes");
+    div_opcoes.innerHTML = "";
+
+    dados_pergunta.opcoes.forEach(item => {
+        let botao = document.createElement("div"); 
+        botao.classList.add("opcao");             
+        botao.innerText = item.txt;                
+
+        botao.onclick = function() {
+            grana += item.g;
+            sustenta += item.s;
+            qtd_agua += item.a;
+            qtd_prod += item.p;
+
+            if (sustenta > 100) sustenta = 100;
+            if (sustenta < 0) sustenta = 0;
+            if (qtd_agua > 100) qtd_agua = 100;
+            if (qtd_agua < 0) qtd_agua = 0;
+
+            recarregarPainel(); 
+
+            if (checarFalencia()) return;
+
+            setTimeout(function() {
+                num_fase++;                
+                mostrarProximaPergunta();  
+            }, 300);
+        };
+
+        div_opcoes.appendChild(botao);
+    });
+}
+
+function encerrarSimulacao() {
+    let mensagem_final = "";
+
+    if (sustenta >= 80 && grana >= 10000000 && qtd_prod >= 70000) {
+        mensagem_final = "<h2 style='color: #00897b; border: none;'>🏆 FAZENDA MODELO DO FUTURO</h2><p>Parabéns! Você alcançou o equilíbrio perfeito: alta tecnologia, muita riqueza e preservação impecável dos recursos naturais!</p>";
+    } else if (sustenta >= 60) {
+        mensagem_final = "<h2 style='color: #43a047; border: none;'>🌱 FAZENDA SUSTENTÁVEL</h2><p>Bom trabalho! Sua fazenda conseguiu produzir bem cuidando do meio ambiente e protegendo a relação campo-cidade.</p>";
+    } else if (sustenta >= 40) {
+        mensagem_final = "<h2 style='color: #f57c00; border: none;'>🚜 FAZENDA TRADICIONAL</h2><p>Você focou bastante na produção econômica, mas o meio ambiente sofreu fadiga. Fique atento aos limites da terra!</p>";
+    } else {
+        mensagem_final = "<h2 style='color: #c62828; border: none;'>⚠️ COLAPSO AMBIENTAL</h2><p>Sua gestão esgotou a água e destruiu a sustentabilidade. Sem ecossistema equilibrado, o agro não tem futuro.</p>";
+    }
+
+    document.getElementById("texto_pergunta").style.display = "none";
+    document.getElementById("caixa_opcoes").style.display = "none";
+    document.getElementById("alerta_evento").style.display = "none";
+
+    let fim = document.getElementById("fim_jogo");
+    fim.style.display = "block";
+    
+    fim.innerHTML = mensagem_final + "<hr style='margin:20px 0; border:0; border-top:2px solid #a5d6a7;'>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>💰 Saldo Final:</b> " + grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>🌱 Sustentabilidade:</b> " + sustenta + "%</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>💧 Nível de Água:</b> " + qtd_agua + "%</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
+        "<h3 style='margin-top:20px; color:#004d40; text-align: center; border: none;'>🌎 Missão Concluída: Ano 2050</h3>";
+}
+</script>
+</body>
+</html>

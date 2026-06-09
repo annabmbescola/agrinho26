@@ -400,112 +400,301 @@ let num_fase = 0;
 const lista_anos = [2025, 2027, 2029, 2031, 2033, 2035, 2037, 2039, 2041, 2043, 2045, 2047, 2048, 2049, 2050];
 
 const perguntas_jogo = [
-    {
-        titulo: "Você recebeu R$1.000.000 de crédito rural. Como você quer investir?",
-        opcoes: [
-            { txt: "Comprar mais terras e expandir a plantação", g: -1000000, s: 10, a: -20, p: 10000 },
-            { txt: "Investir na agricultura de precisão", g: -500000, s: 10, a: 10, p: 3000 }
-        ]
-    },
-    {
-        titulo: "Um período de seca se aproxima. O que fazer?",
-        opcoes: [
-            { txt: "Construir um reservatório para armazenar e proteger a plantação", g: -50000, s: 15, a: 20, p: 5000 },
-            { txt: "Esperar pelas chuvas", g: 0, s: -10, a: 0, p: -2000 }
-        ]
-    },
-    {
-        titulo: "Um incêndio começou próximo da plantação.",
-        opcoes: [
-            { txt: "Pagar R$10.000 para contê-lo", g: -10000, s: 15, a: -10, p: -500 },
-            { txt: "Deixar queimar", g: 0, s: -50, a: -10, p: -2000 }
-        ]
-    },
-    {
-        titulo: "Há uma área de floresta em sua propriedade que está lhe ocupando espaço.",
-        opcoes: [
-            { txt: "Remover somente o necessário para a nova construção", g: -1000000, s: 5, a: 5, p: 0 },
-            { txt: "Desmatar ela toda para ter mais espaço para algo inovador", g: -2000000, s: -50, a: -5, p: 10000 }
-        ]
-    },
-    {
-        titulo: "Uma empresa te oferece energia solar em troca de uma parcela do seu terreno.",
-        opcoes: [
-            { txt: "Aceitar e instalar painéis", g: -10000, s: 35, a: 0, p: -2000 },
-            { txt: "Recusar a proposta", g: 0, s: -20, a: 0, p: 0 }
-        ]
-    },
-    {
-        titulo: "Uma infestação de pragas atacou a lavoura.",
-        opcoes: [
-            { txt: "Contratar o controle biológico", g: -1000000, s: 25, a: 5, p: 4000 },
-            { txt: "Uso excessivo de químicos para acabar com as pragas", g: -100000, s: -25, a: -15, p: -1000 }
-        ]
-    },
-    {
-        titulo: "Uma rede de supermercados quer comprar e vender seus produtos, desde que sejam certificados.",
-        opcoes: [
-            { txt: "Adequar a fazenda às exigências do comprador", g: 10000000, s: 20, a: -60, p: -20000 },
-            { txt: "Recusar a oferta", g: 0, s: -10, a: 0, p: 0 }
-        ]
-    },
-    {
-        titulo: "Uma nascente foi encontrada na sua propriedade.",
-        opcoes: [
-            { txt: "Proteger a nascente somente em prol da sustentabilidade", g: -1000000, s: 70, a: 80, p: 3000 },
-            { txt: "Vender esse terreno para o governo construir novas estradas", g: 5000000, s: -80, a: -95, p: -5000 }
-        ]
-    },
-    {
-        titulo: "Você possui crédito de carbono disponível.",
-        opcoes: [
-            { txt: "Resgatar mas perder R$10.000.000 na bolsa de valores (taxas)", g: -10000000, s: 30, a: 20, p: 0 },
-            { txt: "Ignorar", g: 0, s: -20, a: 0, p: 0 }
-        ]
-    },
-    {
-        titulo: "Tecnologia de monitoramento por drones é a última tendência. Deseja adquirir?",
-        opcoes: [
-            { txt: "Investir", g: -2000000, s: 15, a: 10, p: 8000 },
-            { txt: "Não investir", g: 0, s: -20, a: -30, p: 0 }
-        ]
-    },
-    {
-        titulo: "Uma onda de chuva extrema atingiu a região.",
-        opcoes: [
-            { txt: "Investir em drenagem", g: -3000000, s: 10, a: 15, p: 10000 },
-            { txt: "Não fazer nada", g: 0, s: -35, a: -10, p: -10000 }
-        ]
-    },
-    {
-        titulo: "Uma universidade oferece parceria tecnológica.",
-        opcoes: [
-            { txt: "Aceitar", g: -50000, s: 20, a: 10, p: 20000 },
-            { txt: "Recusar", g: 0, s: 0, a: 0, p: 0 }
-        ]
-    },
-    {
-        titulo: "Pesquisas apontam que o plantio direto reduz a erosão.",
-        opcoes: [
-            { txt: "Implementar", g: -1500000, s: 25, a: 10, p: 10000 },
-            { txt: "Continuar sistema antigo", g: 1000000, s: -15, a: -10, p: 0 }
-        ]
-    },
-    {
-        titulo: "Você recebe uma proposta de exportação para outro país.",
-        opcoes: [
-            { txt: "Cumprir exigências ambientais e aceitar", g: 50000000, s: 40, a: 25, p: -30000 },
-            { txt: "Não exportar", g: 10, s: 0, a: 0, p: 0 }
-        ]
-    },
-    {
-        titulo: "O ano de 2050 chegou. Uma auditoria deve avaliar sua fazenda.",
-        opcoes: [
-            { txt: "Receber avaliação", g: 0, s: 0, a: 0, p: 0 }
-        ]
-    }
-];
+{
+texto:"Você recebeu R$1.000.000 de crédito rural. Como você quer investir?",
+op:[
+{
+text:"Comprar mais terras e expandir a plantação",
+d:-1000000,
+s:+5,
+a:-10,
+p:+3000
+},
+{
+text:"Investir na agricultura de precisão",
+d:-500000,
+s:+10,
+a:+15,
+p:+1500
+}
+]
+},
 
+{
+texto:"Um período de seca se aproxima. O que fazer?",
+op:[
+{
+text:"Construir um reservatório para armazenar e proteger a plantação",
+d:-300000,
+s:+15,
+a:+30,
+p:+2000
+},
+{
+text:"Esperar pelas chuvas",
+d:0,
+s:-15,
+a:-25,
+p:-2500
+}
+]
+},
+
+{
+texto:"Um incêndio começou próximo da plantação.",
+op:[
+{
+text:"Pagar R$10.000 para contê-lo",
+d:-10000,
+s:+10,
+a:0,
+p:-500
+},
+{
+text:"Deixar queimar",
+d:0,
+s:-40,
+a:-15,
+p:-3000
+}
+]
+},
+
+{
+texto:"Há uma área de floresta em sua propriedade que está lhe ocupando espaço.",
+op:[
+{
+text:"Remover somente o necessário para a nova contrução",
+d:-500000,
+s:+5,
+a:+5,
+p:+1000
+},
+{
+text:"Desmatar a toda para ter mais espaço para algo inovador",
+d:+1200000,
+s:-45,
+a:-25,
+p:+5000
+}
+]
+},
+
+{
+texto:"Uma empresa te oferece energia solar em troca de uma parcela do seu terreno.",
+op:[
+{
+text:"Aceitar e instalar painéis",
+d:-100000,
+s:+30,
+a:+10,
+p:-1000
+},
+{
+text:"Recusar a proposta",
+d:0,
+s:-10,
+a:0,
+p:0
+}
+]
+},
+
+{
+texto:"Uma infestação de pragas atacou a lavoura.",
+op:[
+{
+text:"Constatar o controle biológico",
+d:-300000,
+s:+20,
+a:+10,
+p:+2500
+},
+{
+text:"Uso excessivo de químicos para acabar com as pragas",
+d:-100000,
+s:-30,
+a:-20,
+p:-1500
+}
+]
+},
+
+{
+texto:" Uma rede de supermercados quer comprar e vender seus produtos, desde que sejam certificados.",
+op:[
+{
+text:"Adequar a fazenda às exigências do comprador",
+d:+8000000,
+s:+25,
+a:-50,
+p:-5000
+},
+{
+text:"Recusar a oferta",
+d:0,
+s:-10,
+a:0,
+p:0
+}
+]
+},
+
+{
+texto:"Uma nascente foi encontrada na sua propriedade.",
+op:[
+{
+text:"Proteger a nascente somente em prol da sustentabilidade",
+d:-300000,
+s:+60,
+a:+70,
+p:+2000
+},
+{
+text:"Vender esse terreno para o governo contruir novas estradas e acabar com a nascente",
+d:+3000000,
+s:-70,
+a:-80,
+p:-4000
+}
+]
+},
+
+{
+texto:"Você possui crédito de carbono disponível.",
+op:[
+{
+text:"Resgatar mas perder R$5.000.000",
+d:-2000000,
+s:+25,
+a:+15,
+p:0
+},
+{
+text:"Ignorar",
+d:0,
+s:-15,
+a:0,
+p:0
+}
+]
+},
+
+{
+texto:"Tecnologia de monitoramento por drones é a última tendência. Deseja adquirir?",
+op:[
+{
+text:"Investir",
+d:-1500000,
+s:+15,
+a:+10,
+p:+4000
+},
+{
+text:"Não investir",
+d:0,
+s:-10,
+a:-10,
+p:0
+}
+]
+},
+
+{
+texto:"Uma onda de chuva extrema atingiu a região.",
+op:[
+{
+text:"Investir em drenagem",
+d:-2000000,
+s:+10,
+a:+20,
+p:+5000
+},
+{
+text:"Não fazer nada",
+d:0,
+s:-30,
+a:-25,
+p:-4000
+}
+]
+},
+
+{
+texto:"Uma universidade oferece parceria tecnológica.",
+op:[
+{
+text:"Aceitar",
+d:-50000,
+s:+20,
+a:+10,
+p:+3000
+},
+{
+text:"Recusar",
+d:0,
+s:0,
+a:0,
+p:0
+}
+]
+},
+
+{
+texto:"Pesquisas apontam que o plantio direto reduz a erosão.",
+op:[
+{
+text:"Implementar",
+d:-800000,
+s:+25,
+a:+15,
+p:+4000
+},
+{
+text:"Continuar sistema antigo",
+d:+300000,
+s:-20,
+a:-10,
+p:0
+}
+]
+},
+
+{
+texto:"Você recebe uma proposta de exportação para outro país.",
+op:[
+{
+text:"Cumprir exigências ambientais e aceitar",
+d:+12000000,
+s:+35,
+a:+20,
+p:-8000
+},
+{
+text:"Não exportar",
+d:0,
+s:-10,
+a:0,
+p:0
+}
+]
+},
+
+{
+texto:"0 ano de 2050 chegou. Uma auditoria deve avalia sua fazenda.",
+op:[
+{
+text:"Receber avaliação",
+d:0,
+s:0,
+a:0,
+p:0
+}
+]
+}
+
+];
+    
 function comecarJogo() {
     document.getElementById("caixa_jogo").style.display = "block";
     recarregarPainel();          

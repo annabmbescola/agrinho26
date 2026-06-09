@@ -1,5 +1,6 @@
 /* CSS - ESTILIZAÇÃO DO SITE E DO JOGO */
 
+/* TIRA AS MARGENS PADRÕES, FACILITA O CÁLCULO DOS TAMANHOS E DEFINE A FONTE BÁSICA PARA TODO O SITE */
 * {
     margin: 0;
     padding: 0;
@@ -7,10 +8,12 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* APLICA A FONTE DO GOOGLE (ROBOTO SLAB) APENAS NOS TÍTULOS E NO BADGE DO TOPO */
 h1, h2, h3, .badge {
     font-family: 'Roboto Slab', serif;
 }
 
+/* CONFIGURA O FUNDO DA PÁGINA, A COR DO TEXTO E ADICIONA UM EFEITO SUAVE PARA QUANDO ATIVAR O MODO ESCURO */
 body {
     background: #f7fbf7;
     color: #1a3320; 
@@ -18,13 +21,374 @@ body {
     transition: background 0.4s, color 0.4s; 
 }
 
-/* ... COLE TODO O RESTANTE DO SEU CÓDIGO CSS AQUI ... */
+/* ESTILIZA O TOPO DO SITE (HEADER): DEGRADÊ VERDE ANIMADO, TEXTO BRANCO E ESPAÇAMENTO */
+header {
+    background: linear-gradient(135deg, #0a331a, #1b5e20, #2e7d32, #144d29);
+    background-size: 200% 200%;
+    animation: gradientMove 10s ease infinite; 
+    color: #f7fbf7;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 5px solid #a5d6a7;
+}
 
+/* ANIMAÇÃO QUE FAZ O DEGRADÊ DO CABEÇALHO SE MOVER LENTAMENTE */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header h1 {
+    font-size: 3.2rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 3px 6px rgba(0,0,0,0.4); 
+}
+
+header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: auto; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* MENU DE NAVEGAÇÃO: FICA PRESO NO TOPO DA TELA QUANDO ROLA PARA BAIXO E ORGANIZA OS LINKS */
+nav {
+    background: #0d3b1f;
+    padding: 15px;
+    position: sticky; 
+    top: 0;
+    z-index: 999; 
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+/* ESTILO DOS LINKS DO MENU: COR, ESPAÇAMENTO E EFEITO DE BRILHO AO PASSAR O MOUSE */
+nav a {
+    color: #e8f5e9;
+    text-decoration: none; 
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #b9f6ca; 
+    text-shadow: 0 0 8px rgba(185, 246, 202, 0.4);
+}
+
+/* ESTILO ESPECÍFICO PARA O BOTÃO DE MODO ESCURO DENTRO DO MENU */
+#btn_modo_escuro {
+    background: transparent;
+    border: 1px solid #a5d6a7;
+    color: #a5d6a7;
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 15px;
+    width: auto;
+    box-shadow: none;
+}
+
+#btn_modo_escuro:hover {
+    background: #a5d6a7;
+    color: #0d3b1f;
+    transform: translateY(0);
+}
+
+/* ESPAÇAMENTO PADRÃO PARA TODAS AS SEÇÕES DE CONTEÚDO DO SITE */
+section {
+    padding: 60px 10%;
+}
+
+/* TÍTULOS DAS SEÇÕES COM UMA LINHA VERDE EMBAIXO */
+h2 {
+    color: #1b5e20;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #4caf50; 
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* CAIXAS DE TEXTO (CARDS) COM FUNDO BRANCO, BORDAS ARREDONDADAS, SOMBRA E LINHA VERDE NO TOPO */
+.card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(27, 94, 32, 0.08); 
+    font-size: 1.1rem;
+    border-top: 3px solid #81c784; 
+    transition: background 0.4s, color 0.4s;
+}
+
+.card p {
+    margin-bottom: 15px; 
+}
+
+/* ESTILO GERAL DOS BOTÕES: DEGRADÊ VERDE, TEXTO BRANCO E EFEITO DE "SUBIR" AO PASSAR O MOUSE */
+button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #388e3c, #1b5e20);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
+    cursor: pointer; 
+    transition: 0.4s; 
+    box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(45deg, #2e7d32, #0a331a); 
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 15px rgba(27, 94, 32, 0.4);
+}
+
+/* CAIXA PRINCIPAL ONDE O JOGO ACONTECE (COMEÇA ESCONDIDA E SÓ APARECE QUANDO CLICA EM INICIAR) */
+#caixa_jogo {
+    display: none;
+    margin-top: 30px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(27, 94, 32, 0.1);
+    transition: background 0.4s, color 0.4s;
+}
+
+/* ORGANIZA OS QUADRADINHOS DE STATUS (DINHEIRO, ÁGUA, ETC) LADO A LADO E AJUSTA SOZINHO O TAMANHO */
+.status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* VISUAL DE CADA QUADRADINHO DE STATUS DO JOGO */
+.indicador {
+    background: linear-gradient(135deg, #ffffff, #f1fdf5);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #c8e6c9;
+    box-shadow: inset 0 2px 5px rgba(255,255,255,0.8);
+    transition: background 0.4s, border 0.4s;
+}
+
+.indicador h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1b5e20;
+}
+
+/* FUNDO CINZA CLARO DAS BARRINHAS DE PROGRESSO */
+.barra {
+    height: 12px;
+    background: #e8f5e9;
+    border-radius: 20px;
+    overflow: hidden; 
+    margin-top: 15px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* A COR DE PREENCHIMENTO DAS BARRINHAS (QUE CRESCE OU DIMINUI CONFORME OS PONTOS) */
+.progresso {
+    height: 100%;
+    width: 50%; 
+    transition: width 0.5s ease, background 0.5s ease; 
+}
+
+/* TEXTO QUE MOSTRA O ANO ATUAL NO JOGO */
+#txt_ano {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #1b5e20;
+    margin-bottom: 20px;
+    font-family: 'Roboto Slab', serif;
+}
+
+/* CAIXA VERDE QUE MOSTRA OS EVENTOS ALEATÓRIOS (CHUVAS, PRAGAS, MULTAS) */
+#alerta_evento {
+    background: #f1fdf5; 
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #4caf50; 
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #2e7d32;
+    transition: background 0.4s, color 0.4s;
+}
+
+#texto_pergunta {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #1a3320;
+}
+
+/* OPÇÕES QUE O JOGADOR PODE CLICAR PARA RESPONDER AS PERGUNTAS */
+.opcao {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.opcao:hover {
+    transform: scale(1.02); 
+    background: linear-gradient(135deg, #43a047, #1b5e20);
+    box-shadow: 0 5px 12px rgba(27, 94, 32, 0.2);
+}
+
+/* TELA DE RESULTADO QUE APARECE QUANDO O ANO CHEGA A 2050 */
+#fim_jogo {
+    display: none;
+    margin-top: 30px;
+    background: #f1fdf5;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #66bb6a;
+}
+
+/* TELA VERMELHA DE GAME OVER SE O JOGADOR FICAR COM O DINHEIRO NEGATIVO */
+#tela_falencia {
+    display: none; 
+    margin-top: 30px; 
+    background: #0a1f11; 
+    color: #e8f5e9;
+    padding: 30px; 
+    border-radius: 15px; 
+    border: 2px solid #1b5e20;
+    text-align: center;
+}
+
+/* ESTILO DO RODAPÉ NO FINAL DO SITE */
+footer {
+    background: #0d3b1f;
+    color: #c8e6c9;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 1px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #2e7d32; 
+    color: #fff;
+    border-radius: 30px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(46, 125, 50, 0.4);
+}
+
+/* AQUI COMEÇAM AS CONFIGURAÇÕES DO MODO ESCURO (MUDANÇA DE CORES DO FUNDO E TEXTOS PARA TONS ESCUROS) */
+body.dark-theme {
+    background: #121212;
+    color: #e8f5e9;
+}
+
+body.dark-theme h2 {
+    color: #81c784;
+}
+
+body.dark-theme .card, 
+body.dark-theme #caixa_jogo {
+    background: #1e1e1e;
+    color: #e8f5e9;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .indicador {
+    background: #2c2c2c;
+    border-color: #388e3c;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .indicador h3 {
+    color: #81c784;
+}
+
+body.dark-theme .valor,
+body.dark-theme #txt_ano,
+body.dark-theme #texto_pergunta {
+    color: #e8f5e9;
+}
+
+body.dark-theme #alerta_evento,
+body.dark-theme #fim_jogo {
+    background: #2c2c2c;
+    color: #a5d6a7;
+    border-color: #388e3c;
+}
+
+/* REGRAS PARA O CELULAR (MEDIA QUERIES): SE A TELA FOR MENOR QUE 768PX, DIMINUI AS FONTES E EMPILHA OS BOTÕES DO MENU E STATUS */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2.2rem;
     }
-    /* ... resto do seu media query ... */
+    
+    header p {
+        font-size: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 5px 0;
+    }
+
+    #btn_modo_escuro {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    section {
+        padding: 40px 5%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .status {
+        grid-template-columns: 1fr; 
+    }
+
+    #texto_pergunta {
+        font-size: 1.2rem;
+    }
+
     .opcao {
         font-size: 1rem;
         padding: 15px;

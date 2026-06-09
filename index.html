@@ -193,9 +193,8 @@ button:hover {
 .progresso {
     height: 100%;
     width: 50%; 
-    /* A barra de progresso agora é um degradê de turquesa para verde vivo! */
-    background: linear-gradient(90deg, #00897b, #64dd17);
-    transition: 0.5s; 
+    /* A cor agora será controlada automaticamente pelo JavaScript! */
+    transition: width 0.5s ease, background 0.5s ease; 
 }
 
 #txt_ano {
@@ -513,19 +512,45 @@ function comecarJogo() {
     mostrarProximaPergunta();    
 }
 
+    // Função nova que define a cor dependendo da porcentagem
+function atualizarCorBarra(elemento, valor) {
+    if (valor >= 60) {
+        // Verde (OK)
+        elemento.style.background = "linear-gradient(90deg, #2e7d32, #64dd17)";
+    } else if (valor >= 30) {
+        // Laranja para Amarelo (Atenção)
+        elemento.style.background = "linear-gradient(90deg, #f57c00, #fbc02d)";
+    } else {
+        // Vermelho (Perigo)
+        elemento.style.background = "linear-gradient(90deg, #c62828, #ff5252)";
+    }
+}
+
+   
 function recarregarPainel() {
     document.getElementById("txt_grana").innerText = grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     document.getElementById("txt_agua").textContent = qtd_agua + "%";
     document.getElementById("txt_sustenta").textContent = sustenta + "%";
     document.getElementById("txt_prod").innerText = qtd_prod.toLocaleString("pt-BR");
 
-    document.getElementById("barra_sus").style.width = sustenta + "%";
-    document.getElementById("barra_agua").style.width = qtd_agua + "%";
+    // Pegando as barras no HTML
+    let barraSus = document.getElementById("barra_sus");
+    let barraAgua = document.getElementById("barra_agua");
+    let barraProd = document.getElementById("barra_prod");
+
+    // Ajustando os tamanhos (largura)
+    barraSus.style.width = sustenta + "%";
+    barraAgua.style.width = qtd_agua + "%";
     
     let limite_prod = qtd_prod / 1000;
     if(limite_prod > 100) limite_prod = 100; 
     if(limite_prod < 0) limite_prod = 0;      
-    document.getElementById("barra_prod").style.width = limite_prod + "%";
+    barraProd.style.width = limite_prod + "%";
+
+    // Aplicando a lógica de cores nas três barras
+    atualizarCorBarra(barraSus, sustenta);
+    atualizarCorBarra(barraAgua, qtd_agua);
+    atualizarCorBarra(barraProd, limite_prod);
 }
 
 function rolarEventoAleatorio() {

@@ -5,22 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>O Agro Vai Sustentar o Futuro?</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
-/* Reset básico de página: remove margens padrão de todos os navegadores */
+/* Reset básico de página */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Garante que bordas e preenchimentos não quebrem o tamanho dos blocos */
+    box-sizing: border-box; 
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Define a cor de fundo cinza-esverdeada bem clarinha para o site */
-body {
-    background: #f4f8f4;
-    color: #222; /* Define a cor do texto principal como quase preto */
+/* Fonte especial para os títulos */
+h1, h2, h3, .badge {
+    font-family: 'Roboto Slab', serif;
 }
 
-/* Topo do site (Cabeçalho principal) com um degradê verde */
+body {
+    background: #f4f8f4;
+    color: #333; 
+    line-height: 1.6; /* Melhora o espaçamento entre as linhas do texto */
+}
+
+/* Topo do site */
 header {
     background: linear-gradient(135deg, #1b5e20, #4caf50);
     color: white;
@@ -29,80 +38,103 @@ header {
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra leve no título principal */
 }
 
 header p {
     font-size: 1.2rem;
     max-width: 800px;
-    margin: auto; /* Centraliza o texto explicativo na tela */
+    margin: auto; 
 }
 
-/* Menu de navegação que fica fixo no topo ao rolar a página */
+/* Menu de navegação */
 nav {
     background: #114416;
     padding: 15px;
-    position: sticky; /* Efeito de travar no topo */
+    position: sticky; 
     top: 0;
-    z-index: 999; /* Garante que o menu passe por cima de qualquer outro conteúdo */
+    z-index: 999; 
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 nav a {
     color: white;
-    text-decoration: none; /* Remove o sublinhado padrão dos links */
-    margin: 0 12px;
+    text-decoration: none; 
+    margin: 0 15px;
     font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
 
-/* Espaçamento geral das seções informativas */
+nav a:hover {
+    color: #a5d6a7; /* Fica verdinho claro ao passar o mouse */
+}
+
+/* Espaçamento geral das seções */
 section {
     padding: 60px 10%;
 }
 
 h2 {
     color: #2e7d32;
+    font-size: 2.2rem;
     margin-bottom: 20px;
+    border-bottom: 3px solid #4caf50; /* Linha decorativa embaixo do título */
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
-/* Caixa branca estilizada usada para organizar os blocos de texto informativo */
+/* Caixas de texto */
 .card {
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 15px;
     margin-top: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.12); /* Sombra suave ao redor da caixa */
+    box-shadow: 0 6px 15px rgba(0,0,0,.08); 
+    font-size: 1.1rem;
+}
+
+.card p {
+    margin-bottom: 15px; /* Separa os parágrafos dentro dos cards */
 }
 
 /* Botão de iniciar a simulação */
 button {
     width: 100%;
-    padding: 15px;
+    padding: 18px;
     border: none;
     border-radius: 10px;
     background: #2e7d32;
     color: white;
-    font-size: 1rem;
-    cursor: pointer; /* Transforma a seta do mouse na mãozinha de clique */
-    transition: 0.3s; /* Suaviza a mudança de cor ao passar o mouse */
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
+    cursor: pointer; 
+    transition: 0.3s; 
+    box-shadow: 0 4px 6px rgba(0,0,0,.2);
 }
 
 button:hover {
-    background: #1b5e20; /* Cor verde escura ao passar o mouse por cima */
+    background: #1b5e20; 
+    transform: translateY(-2px); /* Efeito de dar um pulinho ao passar o mouse */
 }
 
-/* Caixa principal do jogo (Começa escondida no display: none) */
+/* Caixa principal do jogo */
 #caixa_jogo {
     display: none;
     margin-top: 30px;
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    box-shadow: 0 6px 15px rgba(0,0,0,.1);
 }
 
-/* Alinhamento dos 4 quadradinhos de status (lado a lado e responsivo) */
+/* Status do jogo */
 .status {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -110,106 +142,123 @@ button:hover {
     margin-bottom: 30px;
 }
 
-/* Estilo individual de cada quadradinho de status */
 .indicador {
     background: #f1f8e9;
-    padding: 15px;
+    padding: 20px;
     border-radius: 12px;
     text-align: center;
+    border: 1px solid #c8e6c9;
 }
 
 .indicador h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 10px;
+    color: #2e7d32;
 }
 
-/* Estilo do número grande que fica mudando dentro dos indicadores */
 .valor {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #1b5e20;
 }
 
-/* Fundo cinza das barrinhas de progresso visual */
 .barra {
     height: 12px;
-    background: #ddd;
+    background: #e0e0e0;
     border-radius: 20px;
-    overflow: hidden; /* Garante que o preenchimento não escape das bordas arredondadas */
-    margin-top: 10px;
+    overflow: hidden; 
+    margin-top: 15px;
 }
 
-/* O preenchimento colorido que anda conforme os pontos do jogo */
 .progresso {
     height: 100%;
-    width: 50%; /* Começa preenchido na metade */
-    background: #4caf50;
-    transition: 0.5s; /* Efeito de animação suave quando a barra aumenta ou diminui */
+    width: 50%; 
+    background: linear-gradient(90deg, #4caf50, #2e7d32);
+    transition: 0.5s; 
 }
 
 #txt_ano {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: #1b5e20;
     margin-bottom: 20px;
+    font-family: 'Roboto Slab', serif;
 }
 
-/* Caixa de avisos dos eventos climáticos/fiscais aleatórios */
+/* Eventos e Perguntas */
 #alerta_evento {
-    background: #fff8e1; /* Fundo amarelo clarinho de alerta */
+    background: #fff8e1; 
     padding: 15px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    border-left: 5px solid #ffb300; /* Detalhe amarelo na lateral */
+    margin-bottom: 25px;
     font-weight: bold;
+    color: #ff8f00;
 }
 
 #texto_pergunta {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
+    color: #222;
 }
 
-/* Botões das alternativas para o jogador clicar */
 .opcao {
-    background: #2e7d32;
+    background: #4caf50;
     color: white;
-    padding: 15px;
+    padding: 18px;
     border-radius: 10px;
-    margin-top: 12px;
+    margin-top: 15px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 .opcao:hover {
-    transform: scale(1.02); /* Aumenta levemente de tamanho ao passar o mouse */
-    background: #1b5e20;
+    transform: scale(1.02); 
+    background: #2e7d32;
 }
 
-/* Tela final contendo o resultado da fazenda em 2050 */
+/* Fim de jogo e Falência */
 #fim_jogo {
     display: none;
     margin-top: 30px;
     background: #e8f5e9;
     padding: 30px;
     border-radius: 15px;
+    border: 2px solid #4caf50;
 }
 
-/* Rodapé final do site */
+#tela_falencia {
+    display: none; 
+    margin-top: 30px; 
+    background: #ffebee; 
+    padding: 30px; 
+    border-radius: 15px; 
+    border: 2px solid #c62828;
+    text-align: center;
+}
+
+/* Rodapé */
 footer {
     background: #114416;
     color: white;
     text-align: center;
     padding: 30px;
     margin-top: 50px;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 1px;
 }
 
-/* Pequeno selo de identificação posicionado no topo */
 .badge {
     display: inline-block;
-    padding: 8px 15px;
+    padding: 8px 18px;
     background: #4caf50;
     color: white;
     border-radius: 30px;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
 }
 </style>
 </head>
@@ -218,7 +267,7 @@ footer {
 
 <header>
     <h1>O Agro Vai Sustentar o Futuro?</h1>
-    <p>As decisões tomadas hoje determinam o amanhã. Afinal, o campo e a cidade fazem parte de um mesmo ciclo: o que acontece em um, impacta diretamente o outro.</p>
+    <p>As decisões que tomamos hoje são as sementes do amanhã. O campo e a cidade giram na mesma engrenagem: o que afeta um, transforma o outro.</p>
     <div class="badge">Simulador de Impacto Agro-Urbano</div>
 </header>
 
@@ -231,43 +280,43 @@ footer {
 </nav>
 
 <section id="sustentabilidade">
-    <h2>Sustentabilidade: O Preço das Escolhas.</h2>
+    <h2>Sustentabilidade: O Preço das Escolhas</h2>
     <div class="card">
-       Imagine produzir cada vez mais, ganhar mais dinheiro e expandir seus negócios. Parece o caminho perfeito. Mas e se, para chegar lá, a água começar a faltar, o solo perder sua fertilidade e os recursos naturais deixarem de existir? De que adianta crescer hoje se isso impedir o amanhã?
-
-A sustentabilidade existe porque toda escolha tem um custo e uma consequência. Ela mostra que o verdadeiro progresso não é extrair tudo o que podemos da natureza, mas usar os recursos com inteligência para que continuem existindo no futuro. Afinal, o maior desafio não é conquistar resultados rápidos, e sim garantir que eles possam durar por gerações.
+        <p>Imagine produzir cada vez mais, lucrar alto e expandir seus negócios sem parar. Parece o cenário perfeito, não é? Mas e se, para chegar lá, a água secar, o solo perder a força e a natureza pedir socorro? Crescer hoje não pode custar o nosso amanhã.</p>
+        <p>A sustentabilidade existe para nos lembrar de que toda escolha tem um impacto. O verdadeiro progresso não é extrair até a última gota da natureza, mas usar os recursos com inteligência para que eles nunca faltem. O nosso maior desafio é garantir que a terra continue gerando vida e alimento por muitas gerações!</p>
     </div>
 </section>
 
 <section id="impactos">
     <h2>⚠️ Impactos Ambientais</h2>
     <div class="card">
-       A natureza não envia boletos, mas cobra cada decisão. O desmatamento excessivo, a poluição da água e o uso inadequado do solo podem gerar consequências que afetam toda a sociedade. Quando os recursos naturais são degradados, a produção diminui, os custos aumentam e o equilíbrio ambiental é perdido. Proteger o meio ambiente não é apenas uma questão ecológica — é uma necessidade para garantir qualidade de vida e um futuro sustentável.
+        <p>A natureza não envia boletos, mas ela cobra caro por cada decisão ruim. O desmatamento descontrolado, a poluição dos rios e o desgaste do solo afetam diretamente a nossa vida.</p>
+        <p>Quando a natureza sofre, a produção no campo cai, os alimentos ficam mais caros e o prejuízo é de todo mundo. Proteger o meio ambiente não é apenas uma regra ecológica — é a única forma de garantir segurança e um futuro de verdade para o planeta.</p>
     </div>
 </section>
 
 <section id="agua">
-    <h2>💧 Água</h2>
+    <h2>💧 O Poder da Água</h2>
     <div class="card">
-      💧 Água
-
-Toda forma de vida depende da água — e a agricultura não é diferente. Quando ela é desperdiçada, o problema não aparece apenas na conta ou na lavoura, mas também no futuro da produção. Utilizar a água de forma inteligente significa estar preparado para períodos de seca, proteger os recursos naturais e garantir que esse bem essencial continue disponível para todos. Afinal, sem água não existe colheita, desenvolvimento ou vida.
+        <p>Toda forma de vida depende dela — e no agro isso é lei. Desperdiçar água prejudica não só a sua conta bancária, mas o futuro do clima global.</p>
+        <p>Usar a água de forma inteligente e tecnológica significa estar preparado para as épocas de seca, proteger nossas nascentes e garantir que a próxima colheita aconteça. Afinal, sem água não tem planta, não tem gado e não tem vida.</p>
     </div>
 </section>
 
 <section id="campoCidade">
-    <h2>🚜 Campo e Cidade</h2>
+    <h2>🚜 Campo e Cidade: Uma Só Engrenagem</h2>
     <div class="card">
-O campo e a cidade podem parecer mundos diferentes, mas um não existe sem o outro. Enquanto o campo produz os alimentos que chegam à mesa, a cidade oferece tecnologia, serviços e inovação para tornar essa produção mais eficiente. Tudo o que consumimos, usamos ou produzimos passa, de alguma forma, por essa conexão. Quando um lado cresce, o outro também se fortalece, mostrando que desenvolvimento e qualidade de vida dependem dessa parceria constante.
+        <p>Eles podem até parecer mundos distantes, mas um não sobrevive sem o outro. Enquanto o campo sua a camisa para colocar o alimento na nossa mesa, a cidade devolve esse esforço com tecnologia, inovação e máquinas que melhoram o plantio.</p>
+        <p>Tudo o que consumimos passa por essa ponte. Quando o campo cresce de forma consciente, a cidade ganha força. Desenvolver com qualidade de vida exige que essa parceria seja sempre equilibrada.</p>
     </div>
 </section>
 
 <section id="simulador">
     <h2>🎮 Simulador AGRINHO 2050</h2>
     <div class="card">
-        <p>Você tem o controle de uma fazenda e apenas uma missão: chegar ao ano de 2050. Parece simples, mas cada decisão terá consequências. Investir ou economizar? Expandir ou preservar? Pensar no lucro imediato ou no futuro da propriedade?
-
-Suas escolhas irão definir o destino da fazenda, dos recursos naturais e dos seus resultados financeiros. Será que você consegue encontrar o equilíbrio entre crescimento e sustentabilidade?</p>
+        <p>Você acabou de assumir o controle de uma fazenda e tem uma missão de peso: guiá-la até o ano de 2050!</p>
+        <p>Cada rodada trará um dilema do mundo real. Você prefere o lucro rápido ou a preservação? Suas escolhas vão impactar o seu <b>dinheiro, a sustentabilidade, a água e a produção</b> da sua terra. Se o dinheiro ficar negativo, a fazenda vai à falência na hora.</p>
+        <p>Será que você consegue achar o equilíbrio perfeito entre ficar rico e salvar a natureza?</p>
         <br>
         <button onclick="comecarJogo()">INICIAR SIMULAÇÃO</button>
     </div>
@@ -306,9 +355,10 @@ Suas escolhas irão definir o destino da fazenda, dos recursos naturais e dos se
         <div id="caixa_opcoes"></div> 
         <div id="fim_jogo"></div>
         
-        <div id="tela_falencia" style="display: none; margin-top: 30px; background: #ffebee; padding: 30px; border-radius: 15px; border: 2px solid #c62828;">
-            <h2 style="color: #c62828;">🚨 FALÊNCIA TOTAL!</h2>
+        <div id="tela_falencia">
+            <h2 style="color: #c62828; margin-bottom: 10px;">🚨 FALÊNCIA TOTAL!</h2>
             <p style="margin: 15px 0; color: #222;">O saldo da sua fazenda ficou negativo. Sem capital para operar, pagar funcionários ou comprar insumos, suas atividades foram encerradas antes de 2050.</p>
+            <br>
             <button onclick="window.location.reload()" style="background: #c62828; color: white;">TENTAR NOVAMENTE</button>
         </div>
     </div>
@@ -320,16 +370,14 @@ Suas escolhas irão definir o destino da fazenda, dos recursos naturais e dos se
 
 <script>
 // --- VARIÁVEIS GLOBAIS (Guardam o status atual do jogo) ---
-let grana = 5000000;     // Dinheiro inicial da fazenda
-let sustenta = 50;       // Porcentagem inicial de sustentabilidade
-let qtd_agua = 50;       // Porcentagem inicial de água disponível
-let qtd_prod = 50000;    // Sacas ou pontos de produção inicial
-let num_fase = 0;        // Controla em qual rodada/pergunta o jogador está
+let grana = 5000000;     
+let sustenta = 50;       
+let qtd_agua = 50;       
+let qtd_prod = 50000;    
+let num_fase = 0;        
 
-// Lista dos anos que vão mudando a cada rodada até chegar em 2050
 const lista_anos = [2025, 2027, 2029, 2031, 2033, 2035, 2037, 2039, 2041, 2043, 2045, 2047, 2048, 2049, 2050];
 
-// --- BANCO DE DADOS DAS PERGUNTAS E CONSEQUÊNCIAS ---
 const perguntas_jogo = [
     {
         titulo: "Você recebeu R$1.000.000 de crédito rural. Como você quer investir?",
@@ -384,13 +432,13 @@ const perguntas_jogo = [
         titulo: "Uma nascente foi encontrada na sua propriedade.",
         opcoes: [
             { txt: "Proteger a nascente somente em prol da sustentabilidade", g: -1000000, s: 70, a: 80, p: 3000 },
-            { txt: "Vender esse terreno para o governo construir novas estradas e acabar com a nascente", g: 5000000, s: -80, a: -95, p: -5000 }
+            { txt: "Vender esse terreno para o governo construir novas estradas", g: 5000000, s: -80, a: -95, p: -5000 }
         ]
     },
     {
         titulo: "Você possui crédito de carbono disponível.",
         opcoes: [
-            { txt: "Resgatar mas perder R$10.000.000", g: -10000000, s: 30, a: 20, p: 0 },
+            { txt: "Resgatar mas perder R$10.000.000 na bolsa de valores (taxas)", g: -10000000, s: 30, a: 20, p: 0 },
             { txt: "Ignorar", g: 0, s: -20, a: 0, p: 0 }
         ]
     },
@@ -437,182 +485,150 @@ const perguntas_jogo = [
     }
 ];
 
-/* FUNÇÃO: Liga o simulador, remove o display none e carrega a primeira rodada */
 function comecarJogo() {
     document.getElementById("caixa_jogo").style.display = "block";
-    recarregarPainel();          // Desenha os pontos iniciais na tela
-    mostrarProximaPergunta();    // Joga a primeira pergunta na tela
+    recarregarPainel();          
+    mostrarProximaPergunta();    
 }
 
-/* FUNÇÃO: Atualiza em tempo real todos os textos e tamanhos de barras na tela */
 function recarregarPainel() {
-    // Altera o texto do dinheiro formatando para Moeda Real Brasileira (R$)
     document.getElementById("txt_grana").innerText = grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-    
-    // Altera o número do texto colocando o símbolo de porcentagem ao lado
     document.getElementById("txt_agua").textContent = qtd_agua + "%";
     document.getElementById("txt_sustenta").textContent = sustenta + "%";
-    
-    // Formata o número da produção colocando os pontinhos de milhar (ex: 50.000)
     document.getElementById("txt_prod").innerText = qtd_prod.toLocaleString("pt-BR");
 
-    // Sincroniza a largura física (width) da barra verde com a porcentagem atual da variável
     document.getElementById("barra_sus").style.width = sustenta + "%";
     document.getElementById("barra_agua").style.width = qtd_agua + "%";
     
-    // Calcula a proporção da barra de produção dividindo o valor alto por 1000
     let limite_prod = qtd_prod / 1000;
-    if(limite_prod > 100) limite_prod = 100; // Impede a barra visual de vazar da tela
-    if(limite_prod < 0) limite_prod = 0;     // Impede a barra visual de sumir negativamente
+    if(limite_prod > 100) limite_prod = 100; 
+    if(limite_prod < 0) limite_prod = 0;      
     document.getElementById("barra_prod").style.width = limite_prod + "%";
 }
 
-/* FUNÇÃO: Sorteia um evento surpresa a cada início de rodada */
 function rolarEventoAleatorio() {
-    let dado = Math.floor(Math.random() * 5); // Sorteia um número inteiro de 0 a 4
+    let dado = Math.floor(Math.random() * 5); 
     let msg = "";
 
-    // Distribuição das consequências baseadas no número sorteado
     if (dado === 0) {
-        msg = "🌧️ Chuvas favoreceram a produção.";
+        msg = "🌧️ Chuvas na medida certa favoreceram a produção!";
         qtd_prod += 10;
         grana += 100000;
     } else if (dado === 1) {
-        msg = "☀️ Clima estável favoreceu a lavoura.";
+        msg = "☀️ Clima estável favoreceu a lavoura nesta rodada.";
         qtd_prod += 5000;
         grana += 50000;
     } else if (dado === 2) {
-        msg = "📈 Alta no preço dos grãos.";
+        msg = "📈 O mercado está ótimo! Alta no preço dos grãos.";
         grana += 150000;
     } else if (dado === 3) {
-        msg = "🐝 Polinizadores aumentaram a produtividade.";
+        msg = "🐝 Polinizadores aumentaram a biodiversidade e a produtividade.";
         sustenta += 10;
     } else if (dado === 4) {
-        msg = "⚠️ Fiscalização ambiental na região.";
-        // Se a sustentabilidade estiver crítica (abaixo de 40), o jogador leva uma multa pesada
+        msg = "⚠️ Fiscalização ambiental na região!";
         if (sustenta < 40) {
             msg += " Você foi multado por falta de práticas ecológicas!";
             grana -= 500000;
+        } else {
+            msg += " Tudo certo por aqui, parabéns pela gestão!";
         }
     }
 
-    // TRAVAS DE SEGURANÇA: Bloqueia as variáveis entre 0 e 100 para não quebrar a exibição final
     if (sustenta > 100) sustenta = 100;
     if (sustenta < 0) sustenta = 0;
     if (qtd_agua > 100) qtd_agua = 100;
     if (qtd_agua < 0) qtd_agua = 0;
 
-    // Envia o recado do sorteio para a caixa amarela da tela
     document.getElementById("alerta_evento").innerHTML = msg;
-    recarregarPainel(); // Redesenha tudo atualizado
+    recarregarPainel(); 
 }
 
-/* NOVA FUNÇÃO: Verifica se o dinheiro acabou antes da hora */
 function checarFalencia() {
     if (grana < 0) {
-        // Esconde os elementos do jogo principal
         document.getElementById("texto_pergunta").style.display = "none";
         document.getElementById("caixa_opcoes").style.display = "none";
         document.getElementById("alerta_evento").style.display = "none";
         
-        // Exibe a tela vermelha de falência
         document.getElementById("tela_falencia").style.display = "block";
-        return true; // Retorna verdadeiro (faliu) para barrar o avanço de fase
+        return true; 
     }
-    return false; // Continua vivo no jogo
+    return false; 
 }
 
-/* FUNÇÃO ATUALIZADA: Monta dinamicamente a pergunta atual e as suas respectivas opções */
 function mostrarProximaPergunta() {
-    // Se o contador chegar no fim do array de perguntas, finaliza a partida
     if (num_fase >= perguntas_jogo.length) {
         encerrarSimulacao();
         return;
     }
 
-    // Atualiza o visor do ano puxando a lista pelo número da fase atual
     document.getElementById("txt_ano").innerText = "📅 Ano: " + lista_anos[num_fase];
     
-    rolarEventoAleatorio(); // Ativa um evento natural para abrir a rodada
+    rolarEventoAleatorio(); 
 
-    // Verifica se a multa do evento aleatório falhou a fazenda logo no início da rodada
     if (checarFalencia()) return;
 
-    // Pega os dados da pergunta atual baseados no índice do jogo
     let dados_pergunta = perguntas_jogo[num_fase];
     document.getElementById("texto_pergunta").innerText = dados_pergunta.titulo;
 
-    // Limpa os botões da rodada anterior para não acumular alternativas na tela
     let div_opcoes = document.getElementById("caixa_opcoes");
     div_opcoes.innerHTML = "";
 
-    // Varre a lista de opções da pergunta e cria um botão clicável para cada uma
     dados_pergunta.opcoes.forEach(item => {
-        let botao = document.createElement("div"); // Cria uma div em branco
-        botao.classList.add("opcao");             // Adiciona a classe CSS de estilização
-        botao.innerText = item.txt;               // Adiciona o texto da alternativa dentro dela
+        let botao = document.createElement("div"); 
+        botao.classList.add("opcao");             
+        botao.innerText = item.txt;               
 
-        // Programação do que acontece no momento em que o jogador clica na opção
         botao.onclick = function() {
-            // Aplica o impacto matemático nas variáveis globais
             grana += item.g;
             sustenta += item.s;
             qtd_agua += item.a;
             qtd_prod += item.p;
 
-            // TRAVAS DE SEGURANÇA SEGUNDA ETAPA: Garante limites mesmo após a soma das escolhas
             if (sustenta > 100) sustenta = 100;
             if (sustenta < 0) sustenta = 0;
             if (qtd_agua > 100) qtd_agua = 100;
             if (qtd_agua < 0) qtd_agua = 0;
 
-            recarregarPainel(); // Recarrega o painel de forma instantânea para dar feedback
+            recarregarPainel(); 
 
-            // Verifica se as decisões tomadas nesta rodada resultaram em falência
             if (checarFalencia()) return;
 
-            // Dá uma pequena pausa de 300 milissegundos para o jogador ver os pontos se mexendo antes de pular de ano
             setTimeout(function() {
-                num_fase++;                // Avança o contador de fase
-                mostrarProximaPergunta();  // Recomeça o ciclo trazendo a próxima rodada
+                num_fase++;                
+                mostrarProximaPergunta();  
             }, 300);
         };
 
-        // Coloca o botão recém-criado visível dentro da caixa de opções do HTML
         div_opcoes.appendChild(botao);
     });
 }
 
-/* FUNÇÃO: Oculta as perguntas e exibe o veredito final com o troféu da fazenda em 2050 */
 function encerrarSimulacao() {
     let mensagem_final = "";
 
-    // Condições lógicas para definir o ranking de sucesso do jogador baseado no seu desempenho
     if (sustenta >= 80 && grana >= 10000000 && qtd_prod >= 70000) {
-        mensagem_final = "<h2>🏆 FAZENDA MODELO DO FUTURO</h2><p>Parabéns! Você alcançou o equilíbrio perfeito: alta tecnologia, muita riqueza e preservação impecável dos recursos naturais!</p>";
+        mensagem_final = "<h2 style='color: #1b5e20; border: none;'>🏆 FAZENDA MODELO DO FUTURO</h2><p>Parabéns! Você alcançou o equilíbrio perfeito: alta tecnologia, muita riqueza e preservação impecável dos recursos naturais!</p>";
     } else if (sustenta >= 60) {
-        mensagem_final = "<h2>🌱 FAZENDA SUSTENTÁVEL</h2><p>Bom trabalho! Sua fazenda conseguiu produzir bem cuidando do meio ambiente e protegendo o ciclo campo-cidade.</p>";
+        mensagem_final = "<h2 style='color: #2e7d32; border: none;'>🌱 FAZENDA SUSTENTÁVEL</h2><p>Bom trabalho! Sua fazenda conseguiu produzir bem cuidando do meio ambiente e protegendo a relação campo-cidade.</p>";
     } else if (sustenta >= 40) {
-        mensagem_final = "<h2>🚜 FAZENDA TRADICIONAL</h2><p>Você focou bastante na produção econômica, mas o meio ambiente sofreu fadiga. Fique atento aos limites da terra!</p>";
+        mensagem_final = "<h2 style='color: #ff8f00; border: none;'>🚜 FAZENDA TRADICIONAL</h2><p>Você focou bastante na produção econômica, mas o meio ambiente sofreu fadiga. Fique atento aos limites da terra!</p>";
     } else {
-        mensagem_final = "<h2>⚠️ COLAPSO AMBIENTAL</h2><p>Sua gestão esgotou a água e destruiu a sustentabilidade. Sem ecossistema equilibrado, o agro não se sustenta!</p>";
+        mensagem_final = "<h2 style='color: #c62828; border: none;'>⚠️ COLAPSO AMBIENTAL</h2><p>Sua gestão esgotou a água e destruiu a sustentabilidade. Sem ecossistema equilibrado, o agro não tem futuro.</p>";
     }
 
-    // Esconde os elementos de perguntas para limpar o visual e tira o alerta de evento para não sujar a tela final
     document.getElementById("texto_pergunta").style.display = "none";
     document.getElementById("caixa_opcoes").style.display = "none";
     document.getElementById("alerta_evento").style.display = "none";
 
-    // Ativa e monta a exibição do card de encerramento com os dados cravados de 2050
     let fim = document.getElementById("fim_jogo");
     fim.style.display = "block";
     
-    fim.innerHTML = mensagem_final + "<hr style='margin:15px 0; border:0; border-top:1px solid #ccc;'>" +
-        "<p style='margin:8px 0;'><b>💰 Saldo Final:</b> " + grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</p>" +
-        "<p style='margin:8px 0;'><b>🌱 Sustentabilidade:</b> " + sustenta + "%</p>" +
-        "<p style='margin:8px 0;'><b>💧 Nível de Água:</b> " + qtd_agua + "%</p>" +
-        "<p style='margin:8px 0;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
-        "<h3 style='margin-top:15px; color:#1b5e20;'>🌎 Linha do Tempo Concluída: Ano 2050</h3>";
+    fim.innerHTML = mensagem_final + "<hr style='margin:20px 0; border:0; border-top:2px solid #ccc;'>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>💰 Saldo Final:</b> " + grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>🌱 Sustentabilidade:</b> " + sustenta + "%</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>💧 Nível de Água:</b> " + qtd_agua + "%</p>" +
+        "<p style='margin:10px 0; font-size: 1.2rem;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
+        "<h3 style='margin-top:20px; color:#1b5e20; text-align: center; border: none;'>🌎 Missão Concluída: Ano 2050</h3>";
 }
 </script>
 </body>

@@ -1,0 +1,32 @@
+/* CSS - ESTILIZAÇÃO DO SITE E DO JOGO */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, .badge {
+    font-family: 'Roboto Slab', serif;
+}
+
+body {
+    background: #f7fbf7;
+    color: #1a3320; 
+    line-height: 1.6; 
+    transition: background 0.4s, color 0.4s; 
+}
+
+/* ... COLE TODO O RESTANTE DO SEU CÓDIGO CSS AQUI ... */
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    /* ... resto do seu media query ... */
+    .opcao {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}

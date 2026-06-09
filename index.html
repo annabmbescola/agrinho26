@@ -24,44 +24,56 @@ h1, h2, h3, .badge {
 }
 
 body {
-    background: #f4f8f4;
+    /* Fundo off-white com um toque quase imperceptível de azul e verde */
+    background: #f4f9f9;
     color: #333; 
-    line-height: 1.6; /* Melhora o espaçamento entre as linhas do texto */
+    line-height: 1.6; 
 }
 
-/* Topo do site */
+/* Topo do site com Gradiente Verde e Azul */
 header {
-    background: linear-gradient(135deg, #1b5e20, #4caf50);
+    background: linear-gradient(135deg, #0b503e, #026597, #138a5b);
+    background-size: 200% 200%;
+    animation: gradientMove 10s ease infinite; /* Animação suave no fundo */
     color: white;
-    padding: 70px 20px;
+    padding: 80px 20px;
     text-align: center;
+    border-bottom: 5px solid #a3e4d7;
+}
+
+/* Criando o movimento do gradiente no Topo */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 header h1 {
     font-size: 3.2rem;
     margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra leve no título principal */
+    text-shadow: 2px 3px 6px rgba(0,0,0,0.4); 
 }
 
 header p {
     font-size: 1.2rem;
     max-width: 800px;
     margin: auto; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 /* Menu de navegação */
 nav {
-    background: #114416;
+    background: #06393b; /* Tom escuro e elegante entre azul e verde */
     padding: 15px;
     position: sticky; 
     top: 0;
     z-index: 999; 
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 nav a {
-    color: white;
+    color: #e0f2f1;
     text-decoration: none; 
     margin: 0 15px;
     font-weight: bold;
@@ -72,7 +84,8 @@ nav a {
 }
 
 nav a:hover {
-    color: #a5d6a7; /* Fica verdinho claro ao passar o mouse */
+    color: #4dd0e1; /* Fica azul claro/ciano ao passar o mouse */
+    text-shadow: 0 0 8px rgba(77, 208, 225, 0.5);
 }
 
 /* Espaçamento geral das seções */
@@ -81,26 +94,29 @@ section {
 }
 
 h2 {
-    color: #2e7d32;
+    /* Letra em tom de azul escuro com traço verde embaixo */
+    color: #01579b;
     font-size: 2.2rem;
     margin-bottom: 20px;
-    border-bottom: 3px solid #4caf50; /* Linha decorativa embaixo do título */
+    border-bottom: 4px solid #26a69a; 
     display: inline-block;
     padding-bottom: 5px;
 }
 
-/* Caixas de texto */
+/* Caixas de texto (Cards) */
 .card {
     background: white;
     padding: 30px;
     border-radius: 15px;
     margin-top: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,.08); 
+    /* Sombra azulada bem chique */
+    box-shadow: 0 8px 20px rgba(2, 119, 189, 0.08); 
     font-size: 1.1rem;
+    border-top: 3px solid #b2dfdb; /* Detalhe fininho no topo */
 }
 
 .card p {
-    margin-bottom: 15px; /* Separa os parágrafos dentro dos cards */
+    margin-bottom: 15px; 
 }
 
 /* Botão de iniciar a simulação */
@@ -109,19 +125,21 @@ button {
     padding: 18px;
     border: none;
     border-radius: 10px;
-    background: #2e7d32;
+    /* Gradiente vibrante */
+    background: linear-gradient(45deg, #0277bd, #00897b);
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
     font-family: 'Roboto Slab', serif;
     cursor: pointer; 
-    transition: 0.3s; 
-    box-shadow: 0 4px 6px rgba(0,0,0,.2);
+    transition: 0.4s; 
+    box-shadow: 0 4px 10px rgba(0, 137, 123, 0.3);
 }
 
 button:hover {
-    background: #1b5e20; 
-    transform: translateY(-2px); /* Efeito de dar um pulinho ao passar o mouse */
+    background: linear-gradient(45deg, #01579b, #00695c); 
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 15px rgba(0, 137, 123, 0.4);
 }
 
 /* Caixa principal do jogo */
@@ -131,7 +149,7 @@ button:hover {
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0,0,0,.1);
+    box-shadow: 0 8px 25px rgba(2, 119, 189, 0.1);
 }
 
 /* Status do jogo */
@@ -143,57 +161,60 @@ button:hover {
 }
 
 .indicador {
-    background: #f1f8e9;
+    background: linear-gradient(135deg, #f3fdfd, #e0f2f1);
     padding: 20px;
     border-radius: 12px;
     text-align: center;
-    border: 1px solid #c8e6c9;
+    border: 1px solid #b2dfdb;
+    box-shadow: inset 0 2px 5px rgba(255,255,255,0.8);
 }
 
 .indicador h3 {
     font-size: 1.1rem;
     margin-bottom: 10px;
-    color: #2e7d32;
+    color: #00695c;
 }
 
 .valor {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #1b5e20;
+    color: #0277bd;
 }
 
 .barra {
     height: 12px;
-    background: #e0e0e0;
+    background: #cfd8dc;
     border-radius: 20px;
     overflow: hidden; 
     margin-top: 15px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .progresso {
     height: 100%;
     width: 50%; 
-    background: linear-gradient(90deg, #4caf50, #2e7d32);
+    /* A barra de progresso agora é um degradê de azul para verde! */
+    background: linear-gradient(90deg, #0288d1, #4caf50);
     transition: 0.5s; 
 }
 
 #txt_ano {
     font-size: 1.6rem;
     font-weight: bold;
-    color: #1b5e20;
+    color: #004d40;
     margin-bottom: 20px;
     font-family: 'Roboto Slab', serif;
 }
 
 /* Eventos e Perguntas */
 #alerta_evento {
-    background: #fff8e1; 
+    background: #e1f5fe; 
     padding: 15px;
     border-radius: 10px;
-    border-left: 5px solid #ffb300; /* Detalhe amarelo na lateral */
+    border-left: 5px solid #0288d1; 
     margin-bottom: 25px;
     font-weight: bold;
-    color: #ff8f00;
+    color: #01579b;
 }
 
 #texto_pergunta {
@@ -203,7 +224,7 @@ button:hover {
 }
 
 .opcao {
-    background: #4caf50;
+    background: linear-gradient(135deg, #26a69a, #0288d1);
     color: white;
     padding: 18px;
     border-radius: 10px;
@@ -212,21 +233,23 @@ button:hover {
     transition: 0.3s;
     font-size: 1.1rem;
     font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
 .opcao:hover {
     transform: scale(1.02); 
-    background: #2e7d32;
+    background: linear-gradient(135deg, #00897b, #0277bd);
+    box-shadow: 0 5px 12px rgba(2, 119, 189, 0.2);
 }
 
 /* Fim de jogo e Falência */
 #fim_jogo {
     display: none;
     margin-top: 30px;
-    background: #e8f5e9;
+    background: #e0f2f1;
     padding: 30px;
     border-radius: 15px;
-    border: 2px solid #4caf50;
+    border: 2px solid #26a69a;
 }
 
 #tela_falencia {
@@ -241,8 +264,8 @@ button:hover {
 
 /* Rodapé */
 footer {
-    background: #114416;
-    color: white;
+    background: #00332c;
+    color: #b2dfdb;
     text-align: center;
     padding: 30px;
     margin-top: 50px;
@@ -253,12 +276,14 @@ footer {
 .badge {
     display: inline-block;
     padding: 8px 18px;
-    background: #4caf50;
-    color: white;
+    background: #00bcd4; /* Azul ciano vibrante */
+    color: #fff;
     border-radius: 30px;
     margin-top: 15px;
     font-size: 0.9rem;
     text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 188, 212, 0.4);
 }
 </style>
 </head>
@@ -607,11 +632,11 @@ function encerrarSimulacao() {
     let mensagem_final = "";
 
     if (sustenta >= 80 && grana >= 10000000 && qtd_prod >= 70000) {
-        mensagem_final = "<h2 style='color: #1b5e20; border: none;'>🏆 FAZENDA MODELO DO FUTURO</h2><p>Parabéns! Você alcançou o equilíbrio perfeito: alta tecnologia, muita riqueza e preservação impecável dos recursos naturais!</p>";
+        mensagem_final = "<h2 style='color: #0288d1; border: none;'>🏆 FAZENDA MODELO DO FUTURO</h2><p>Parabéns! Você alcançou o equilíbrio perfeito: alta tecnologia, muita riqueza e preservação impecável dos recursos naturais!</p>";
     } else if (sustenta >= 60) {
-        mensagem_final = "<h2 style='color: #2e7d32; border: none;'>🌱 FAZENDA SUSTENTÁVEL</h2><p>Bom trabalho! Sua fazenda conseguiu produzir bem cuidando do meio ambiente e protegendo a relação campo-cidade.</p>";
+        mensagem_final = "<h2 style='color: #26a69a; border: none;'>🌱 FAZENDA SUSTENTÁVEL</h2><p>Bom trabalho! Sua fazenda conseguiu produzir bem cuidando do meio ambiente e protegendo a relação campo-cidade.</p>";
     } else if (sustenta >= 40) {
-        mensagem_final = "<h2 style='color: #ff8f00; border: none;'>🚜 FAZENDA TRADICIONAL</h2><p>Você focou bastante na produção econômica, mas o meio ambiente sofreu fadiga. Fique atento aos limites da terra!</p>";
+        mensagem_final = "<h2 style='color: #f57c00; border: none;'>🚜 FAZENDA TRADICIONAL</h2><p>Você focou bastante na produção econômica, mas o meio ambiente sofreu fadiga. Fique atento aos limites da terra!</p>";
     } else {
         mensagem_final = "<h2 style='color: #c62828; border: none;'>⚠️ COLAPSO AMBIENTAL</h2><p>Sua gestão esgotou a água e destruiu a sustentabilidade. Sem ecossistema equilibrado, o agro não tem futuro.</p>";
     }
@@ -623,12 +648,12 @@ function encerrarSimulacao() {
     let fim = document.getElementById("fim_jogo");
     fim.style.display = "block";
     
-    fim.innerHTML = mensagem_final + "<hr style='margin:20px 0; border:0; border-top:2px solid #ccc;'>" +
+    fim.innerHTML = mensagem_final + "<hr style='margin:20px 0; border:0; border-top:2px solid #b2dfdb;'>" +
         "<p style='margin:10px 0; font-size: 1.2rem;'><b>💰 Saldo Final:</b> " + grana.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</p>" +
         "<p style='margin:10px 0; font-size: 1.2rem;'><b>🌱 Sustentabilidade:</b> " + sustenta + "%</p>" +
         "<p style='margin:10px 0; font-size: 1.2rem;'><b>💧 Nível de Água:</b> " + qtd_agua + "%</p>" +
         "<p style='margin:10px 0; font-size: 1.2rem;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
-        "<h3 style='margin-top:20px; color:#1b5e20; text-align: center; border: none;'>🌎 Missão Concluída: Ano 2050</h3>";
+        "<h3 style='margin-top:20px; color:#01579b; text-align: center; border: none;'>🌎 Missão Concluída: Ano 2050</h3>";
 }
 </script>
 </body>

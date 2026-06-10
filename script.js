@@ -1,3 +1,4 @@
+<script>
 /* =========================================
    JAVASCRIPT - A LÓGICA E O CÉREBRO DO JOGO
 =========================================
@@ -263,7 +264,7 @@ function mostrarProximaPergunta() {
 
     dados_pergunta.op.forEach(item => {
         let botao = document.createElement("div"); 
-        botao.classList.add("opcao");              
+        botao.classList.add("opcao");             
         botao.innerText = item.text;                
 
         botao.onclick = function() {
@@ -331,3 +332,4 @@ function encerrarSimulacao() {
         "<p style='margin:10px 0; font-size: 1.2rem;'><b>🚜 Volume de Produção:</b> " + qtd_prod.toLocaleString("pt-BR") + "</p>" +
         "<h3 style='margin-top:20px; text-align: center; border: none;'>Missão Concluída: Ano 2050</h3>";
 }
+</script>
